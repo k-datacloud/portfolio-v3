@@ -1,0 +1,38 @@
+---
+const pageTitle = "My Portfolio | ";
+const description = "My Portfolio";
+import "../styles/reset.css";
+import "../styles/style.scss";
+---
+
+<html>
+  <head lang="en">
+    <meta charset="utf-8" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="icon" type="image/svg+xml" href="" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:title" content={pageTitle} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <svg class="filter" xmlns="http://www.w3.org/2000/svg">
+      <filter id="grainy">
+        <feTurbulence type="turbulence" baseFrequency="0.6" numOctaves="1"
+        ></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+    </svg>
+    <div class="loader">
+      <div class="l-wrapper">
+        <p class="js-percent">0%</p>
+      </div>
+    </div>
+    <main class="main">
+      <slot />
+    </main>
+  </body>
+</html>

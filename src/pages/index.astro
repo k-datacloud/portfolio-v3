@@ -1,246 +1,30 @@
 ---
-import Head from "../components/Head.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import "../styles/style.scss";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Kv from "../components/Kv.astro";
+import Intro from "../components/Intro.astro";
 ---
 
-<Head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Kaisei Sadatoki's portfolio site. Web developer and designer based in Japan."
-  />
-  <link rel="icon" href="icon.ico" sizes="any" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
-  <link rel="stylesheet" href="dist/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&display=swap"
-    rel="stylesheet"
-  />
-  <title>Kaisei Sadatoki | Web Developer & Designer</title>
-</Head>
+<BaseLayout>
+  <Kv />
+  <Intro />
+</BaseLayout>
 
-<html lang="en">
-  <body>
-    <div class="cursor"></div>
+<!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"
+></script>
+<script src="/scripts/main.js">
+  let obj = { val: 0 };
+  const percent = document.querySelector(".js-percent");
+  console.log(percent);
 
-    <Header />
-
-    <main>
-      <section class="hero">
-        <div class="hero__wrapper">
-          <div class="hero__content-main">
-            <div class="red-circle"></div>
-            <div class="flex-container">
-              <div class="hero__info">
-                <h2 class="hero__title">Hi I'm Kaisei</h2>
-                <p class="hero__text hero__text--light">
-                  web developer and designer based in japan
-                </p>
-                <p class="hero__text hero__text--light hero__text--pc">
-                  I'm web developer and designer based in Hyogo, Japan.
-                </p>
-              </div>
-              <a class="button" href="about.html"
-                ><span class="hero__text hero__text--button"
-                  >view more profile</span
-                ></a
-              >
-            </div>
-          </div>
-          <div class="hero__footer">
-            <p class="hero__text hero__text--sp">scroll down</p>
-            <ul class="hero-social-list">
-              <li class="hero-social-list__item">
-                <a
-                  class="hero__link"
-                  href="https://github.com/k-datacloud"
-                  target="_blank"
-                  >github
-                  <img
-                    class="arrow-icon arrow-icon--default"
-                    src="Vector.svg"
-                    alt="arrow icon"
-                  />
-                  <img
-                    class="arrow-icon arrow-icon--hover"
-                    src="../assets/Vector-white.svg"
-                    alt="arrow icon"
-                  />
-                </a>
-              </li>
-              <li class="hero-social-list__item">
-                <a
-                  class="hero__link"
-                  href="https://www.linkedin.com/in/s-kaisei/"
-                  target="_blank"
-                  >linkedin
-                  <img
-                    class="arrow-icon arrow-icon--default"
-                    src="img/Vector.svg"
-                    alt="arrow icon"
-                  /><img
-                    class="arrow-icon arrow-icon--hover"
-                    src="img/Vector.svg"
-                    alt="arrow icon"
-                  />
-                </a>
-              </li>
-              <li class="hero-social-list__item">
-                <a
-                  class="hero__link"
-                  href="https://www.instagram.com/kaiseee_i_j/"
-                  target="_blank"
-                  >instagram
-                  <img
-                    class="arrow-icon arrow-icon--default"
-                    src="img/Vector.svg"
-                    alt="arrow icon"
-                  /><img
-                    class="arrow-icon arrow-icon--hover"
-                    src="img/Vector.svg"
-                    alt="arrow icon"
-                  />
-                </a>
-              </li>
-            </ul>
-            <p class="hero__text hero__text--pc-small">
-              design and developed by kaisei sadatoki
-            </p>
-            <div class="hero__link-wrapper">
-              <a class="hero__link hero__link--muted" href="about.html"
-                >about me</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="p-top-showcase">
-        <div class="p-top-showcase__wrapper">
-          <ul class="p-top-showcase__list p-top-showcase-list">
-            <li class="p-top-showcase-list__item">
-              <a href="portfolio-ver2.html" class="p-top-showcase__img">
-                <img src="img/portfolio-ver2.png" alt="portfolio thumnails" />
-              </a>
-              <div class="p-top-showcase-list__body">
-                <div class="p-top-showcase-list__info">
-                  <h3 class="p-top-showcase__title">portfolio ver2</h3>
-                  <p
-                    class="p-top-showcase__text p-top-showcase__text p-top-showcase__text--pc"
-                  >
-                    my portfolio website version 2
-                  </p>
-                  <p class="p-top-showcase__text">
-                    <a class="p-top-showcase__link" href="portfolio-ver2.html"
-                      >read more</a
-                    >
-                  </p>
-                </div>
-                <div class="divider"></div>
-              </div>
-            </li>
-            <li class="p-top-showcase-list__item">
-              <a href="portfolio-lemon.html" class="p-top-showcase__img">
-                <img src="img/portfolio-lemon.png" alt="portfolio thumnails" />
-              </a>
-              <div class="p-top-showcase-list__body">
-                <div class="p-top-showcase-list__info">
-                  <h3 class="p-top-showcase__title">君の近く</h3>
-                  <p
-                    class="p-top-showcase__text p-top-showcase__text p-top-showcase__text--pc"
-                  >
-                    branding site in Japanese about lemons and a lemon farm
-                  </p>
-                  <p class="p-top-showcase__text">
-                    <a class="p-top-showcase__link" href="portfolio-lemon.html"
-                      >read more</a
-                    >
-                  </p>
-                </div>
-                <div class="divider"></div>
-              </div>
-            </li>
-            <li class="p-top-showcase-list__item">
-              <a href="portfolio-kaiseidev.html" class="p-top-showcase__img">
-                <img
-                  src="img/portfolio-kaiseidev.png"
-                  alt="portfolio thumnails"
-                />
-              </a>
-              <div class="p-top-showcase-list__body">
-                <div class="p-top-showcase-list__info">
-                  <h3 class="p-top-showcase__title">kaiseidev</h3>
-                  <p
-                    class="p-top-showcase__text p-top-showcase__text p-top-showcase__text--pc"
-                  >
-                    service site in English about my web development and design
-                    services
-                  </p>
-                  <p class="p-top-showcase__text">
-                    <a
-                      class="p-top-showcase__link"
-                      href="portfolio-kaiseidev.html">read more</a
-                    >
-                  </p>
-                </div>
-                <div class="divider"></div>
-              </div>
-            </li>
-            <li class="p-top-showcase-list__item">
-              <a href="portfolio-okome.html" class="p-top-showcase__img">
-                <img src="img/portfolio-okome.png" alt="portfolio thumnails" />
-              </a>
-              <div class="p-top-showcase-list__body">
-                <div class="p-top-showcase-list__info">
-                  <h3 class="p-top-showcase__title">豊穣米堂</h3>
-                  <p
-                    class="p-top-showcase__text p-top-showcase__text p-top-showcase__text--pc"
-                  >
-                    landing page in Japanese about a company providing premium
-                    rice
-                  </p>
-                  <p class="p-top-showcase__text">
-                    <a class="p-top-showcase__link" href="portfolio-okome.html"
-                      >read more</a
-                    >
-                  </p>
-                </div>
-                <div class="divider"></div>
-              </div>
-            </li>
-            <li class="p-top-showcase-list__item">
-              <a href="portfolio-ver1.html" class="p-top-showcase__img">
-                <img src="img/portfolio-ver1.png" alt="portfolio thumnails" />
-              </a>
-              <div class="p-top-showcase-list__body">
-                <div class="p-top-showcase-list__info">
-                  <h3 class="p-top-showcase__title">portfolio ver.1</h3>
-                  <p
-                    class="p-top-showcase__text p-top-showcase__text p-top-showcase__text--pc"
-                  >
-                    My portfolio website ver.1
-                  </p>
-                  <p class="p-top-showcase__text">
-                    <a class="p-top-showcase__link" href="portfolio-ver1.html"
-                      >read more</a
-                    >
-                  </p>
-                </div>
-                <div class="divider"></div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </main>
-
-    <Footer />
-
-    <!-- <script src="script.js"></script> -->
-  </body>
-</html>
+  gsap.to(obj, {
+    val: 100,
+    duration: 1,
+    onUpdate: () => {
+      percent.textContent = `${obj.val.toFixed(0)}%`;
+    },
+  });
+</script> -->
+<!-- <script type="module" is:inline>
+  import { runMain } from "../scripts/main.js";
+  runMain();
+</script> -->
