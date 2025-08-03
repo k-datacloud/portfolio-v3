@@ -1,16 +1,12 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export function runMain() {
-  let obj = { val: 0 };
-  const percent = document.querySelector(".js-percent");
-  console.log(percent);
-
-  gsap.to(obj, {
-    val: 100,
+const mainScript = () => {
+  console.log("とんかつの作り方を学ぼう");
+  gsap.to(".loader__text", {
     duration: 1,
-    onUpdate: () => {
-      percent.textContent = `${obj.val.toFixed(0)}%`;
-    },
+    color: "blue",
   });
-}
+};
+
+export default mainScript;

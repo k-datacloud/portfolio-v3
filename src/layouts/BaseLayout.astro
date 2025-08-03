@@ -26,9 +26,17 @@ import "../styles/style.scss";
         <feColorMatrix type="saturate" values="0"></feColorMatrix>
       </filter>
     </svg>
-    <div class="loader">
+    <div class="loader js-loader">
       <div class="l-wrapper">
-        <p class="js-percent">0%</p>
+        <div class="loader__info">
+          <span class="text-wrapper">
+            <span class="digit loader__text">0</span>
+          </span>
+          <span class="text-wrapper">
+            <span class="digit loader__text">0</span>
+          </span>
+          <span class="loader__text">%</span>
+        </div>
       </div>
     </div>
     <main class="main">
@@ -38,8 +46,6 @@ import "../styles/style.scss";
 </html>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
-  console.log("hello world");
+  import mainScript from "../scripts/main.js";
+  mainScript();
 </script>
