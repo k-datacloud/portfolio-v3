@@ -6,7 +6,7 @@ const mainScript = () => {
   console.log("とんかつの作り方を学ぼう");
 
   // Lenis smooth scrolling
-  const operateLenis = () => {
+  const runLenis = () => {
     const lenis = new Lenis({
       autoRaf: true,
       duration: 1.2,
@@ -155,7 +155,7 @@ const mainScript = () => {
         {
           opacity: 0,
           pointerEvents: "none",
-          duration: 1,
+          duration: 2,
           ease: "sine.in",
           onComplete: () => {
             gsap.set(loading, {
@@ -192,7 +192,7 @@ const mainScript = () => {
             gsap.set(main, {
               pointerEvents: "auto",
             });
-            operateLenis();
+            runLenis();
           },
         },
         "+=0.5"
