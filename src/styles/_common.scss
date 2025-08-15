@@ -26,14 +26,85 @@ $breakpoints: (
   font-display: swap;
 }
 
+@mixin font-satoshi {
+  font-family: "Satoshi", sans-serif;
+}
+
+@mixin font-inter {
+  font-family: "Inter", sans-serif;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+li,
+a,
+dl,
+dt,
+dd,
+table,
+tr,
+th,
+td,
+span,
+address {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  line-height: 1;
+  outline: none;
+  box-sizing: border-box;
+  color: inherit;
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  background-color: unset;
+  border: none;
+  outline: none;
+  color: inherit;
+  font: inherit;
+}
+
+div,
+header,
+footer,
+section,
+article,
+figure,
+picture {
+  box-sizing: border-box;
+  margin: 0;
+  display: block;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
 body {
   width: 100%;
   height: auto;
   min-height: 100vh;
   font-family: "Satoshi", sans-serif;
   font-weight: 400;
-  background-color: #222222;
-  color: #ffffff;
+  background-color: #080807;
+  color: #d1d1c7;
 
   &::before {
     content: "";
@@ -42,7 +113,6 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    filter: url("#grainy");
     opacity: 0.2;
     pointer-events: none;
     z-index: 10;
@@ -63,4 +133,9 @@ body {
   margin: 0 auto;
   padding-left: clamp(20px, calc(12px + 2.5vw), 48px);
   padding-right: clamp(20px, calc(12px + 2.5vw), 48px);
+}
+
+.text-wrapper {
+  display: inline-block;
+  overflow: hidden;
 }

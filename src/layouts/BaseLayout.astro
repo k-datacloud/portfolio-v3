@@ -1,8 +1,8 @@
 ---
 const pageTitle = "My Portfolio | ";
 const description = "My Portfolio";
-import "../styles/reset.css";
-import "../styles/style.scss";
+const { bodyClass } = Astro.props;
+import { ClientRouter } from "astro:transitions";
 ---
 
 <html>
@@ -14,11 +14,17 @@ import "../styles/style.scss";
     <link rel="icon" type="image/svg+xml" href="" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <meta property="og:title" content={pageTitle} />
     <title>{pageTitle}</title>
   </head>
-  <body>
+  <body class={bodyClass}>
     <svg class="filter" xmlns="http://www.w3.org/2000/svg">
       <filter id="grainy">
         <feTurbulence type="turbulence" baseFrequency="0.6" numOctaves="1"
@@ -26,19 +32,7 @@ import "../styles/style.scss";
         <feColorMatrix type="saturate" values="0"></feColorMatrix>
       </filter>
     </svg>
-    <div class="loader js-loader">
-      <div class="l-wrapper">
-        <div class="loader__info">
-          <span class="text-wrapper">
-            <span class="digit loader__text">0</span>
-          </span>
-          <span class="text-wrapper">
-            <span class="digit loader__text">0</span>
-          </span>
-          <span class="loader__text">%</span>
-        </div>
-      </div>
-    </div>
+    <slot name="loader" />
     <main class="main">
       <slot />
     </main>

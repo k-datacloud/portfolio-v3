@@ -1,10 +1,15 @@
 ---
+import "../styles/top.scss";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Loading from "../components/Loading.astro";
 import Kv from "../components/Kv.astro";
 import Intro from "../components/Intro.astro";
 ---
 
-<BaseLayout>
+<BaseLayout bodyClass="home">
+  <Fragment slot="loader">
+    <Loading />
+  </Fragment>
   <Kv />
   <Intro />
 </BaseLayout>
