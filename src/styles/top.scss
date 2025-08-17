@@ -28,7 +28,8 @@ body {
 
   &__text {
     @include font-inter;
-    font-size: 120px;
+    font-size: clamp(5rem, 4.0898rem + 3.8835vw, 8.75rem);
+    line-height: 1;
   }
 
   .digit {
@@ -51,6 +52,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-bottom: 40px;
+    max-width: none;
   }
 
   &__bottom {
@@ -66,7 +68,7 @@ body {
   &__tag-line {
     display: block;
     @include font-inter;
-    font-size: 14px;
+    font-size: clamp(0.75rem, 0.706rem + 0.1878vw, 0.875rem);
     line-height: 1.8;
   }
 }
