@@ -1,8 +1,7 @@
 ---
-const pageTitle = "My Portfolio | ";
-const description = "My Portfolio";
-const { bodyClass } = Astro.props;
+const { bodyClass, title, description } = Astro.props;
 import { ClientRouter } from "astro:transitions";
+import Footer from "../components/Footer.astro";
 ---
 
 <html>
@@ -21,8 +20,8 @@ import { ClientRouter } from "astro:transitions";
       rel="stylesheet"
     />
 
-    <meta property="og:title" content={pageTitle} />
-    <title>{pageTitle}</title>
+    <meta property="og:title" content={title} />
+    <title>{title}</title>
   </head>
   <body class={bodyClass}>
     <svg class="filter" xmlns="http://www.w3.org/2000/svg">
@@ -36,6 +35,7 @@ import { ClientRouter } from "astro:transitions";
     <main class="main">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
 

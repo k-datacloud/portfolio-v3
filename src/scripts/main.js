@@ -200,6 +200,38 @@ const mainScript = () => {
     };
 
     openingAnimation();
+
+    const paper = document.querySelector(".js-paper");
+    if (!paper) return;
+    paper.addEventListener("click", () => {
+      gsap.to(paper, {
+        rotateX: -180,
+        rotateY: -180,
+        duration: 1,
+        ease: "power3.out",
+      });
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const intro = document.querySelector(".p-top-intro");
+    const apple = document.querySelector(".apple");
+    const scrollY = window.scrollY / 100;
+    if (!apple) return;
+    gsap.set(apple, {
+      backgroundPosition: "50% -40px",
+    });
+    gsap.to(apple, {
+      backgroundPosition: `50% 40px`,
+      ease: "none",
+      scrollTrigger: {
+        trigger: intro,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+        markers: true,
+      },
+    });
   }
 };
 

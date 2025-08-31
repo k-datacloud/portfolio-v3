@@ -2,14 +2,41 @@
 import "../styles/top.scss";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Loading from "../components/Loading.astro";
-import Kv from "../components/Kv.astro";
-import Intro from "../components/Intro.astro";
 ---
 
-<BaseLayout bodyClass="home">
+<BaseLayout
+  bodyClass="home"
+  title="Kaisei Sadatoki | Portfolio site "
+  description="My Portfolio"
+>
   <Fragment slot="loader">
     <Loading />
   </Fragment>
-  <Kv />
-  <Intro />
+  <section class="p-top-kv">
+    <div class="l-wrapper p-top-kv__wrapper">
+      <div class="p-top-kv__body"></div>
+      <div class="p-top-kv__bottom">
+        <p class="p-top-kv__tag">
+          <span class="text-wrapper">
+            <span class="p-top-kv__tag-line">
+              I’m trying to make something.</span
+            >
+          </span>
+          <span class="text-wrapper">
+            <span class="p-top-kv__tag-line">Not just for you.</span>
+          </span>
+          <span class="text-wrapper">
+            <span class="p-top-kv__tag-line">Maybe not even for me.</span>
+          </span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="p-top-intro">
+    <div class="l-wrapper">
+      <p>こんにちわ。長瀬智也です</p>
+      <div class="paper js-paper"></div>
+      <div class="apple"></div>
+    </div>
+  </section>
 </BaseLayout>
