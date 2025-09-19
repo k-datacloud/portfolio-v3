@@ -9,9 +9,9 @@ import Loading from "../components/Loading.astro";
   title="Kaisei Sadatoki | Portfolio site "
   description="My Portfolio"
 >
-  <Fragment slot="loader">
+  <!-- <Fragment slot="loader">
     <Loading />
-  </Fragment>
+  </Fragment> -->
   <section class="p-top-kv">
     <div class="l-wrapper p-top-kv__wrapper">
       <div class="p-top-kv__body"></div>
@@ -32,11 +32,38 @@ import Loading from "../components/Loading.astro";
       </div>
     </div>
   </section>
-  <section class="p-top-intro">
-    <div class="l-wrapper">
-      <p>こんにちわ。長瀬智也です</p>
-      <div class="paper js-paper"></div>
-      <div class="apple"></div>
+
+  <section class="p-top-cta">
+    <div class="l-wrapper p-top-cta__wrapper">
+      <div class="p-top-cta__container">
+        <a class="c-cta-button p-top-cta__button" href="info">
+          <span class="text-wrapper">
+            <span class="c-cta-button__wrapper"
+              >If you care
+              <img src="/img/button-arrow-top.svg" alt="" />
+            </span>
+            <span class="c-cta-button__wrapper c-cta-button__wrapper--hover"
+              >If you care
+              <img src="/img/button-arrow-top.svg" alt="" />
+            </span>
+          </span>
+        </a>
+        <h2 class="p-top-cta__title c-heading c-heading--black">still here?</h2>
+        <h3 class="p-top-cta__lead p-top-cta__lead-top c-lead c-lead--black">
+          (guess i was a bit harsh.)
+        </h3>
+        <div class="l-image p-top-cta__image">
+          <img src="" alt="" />
+        </div>
+        <p class="p-top-cta__text c-text c-text--black">
+          Honestly… that feels really nice.
+          <br />If you’d like, we could build something together.
+        </p>
+        <h3 class="p-top-cta__lead p-top-cta__lead-bottom c-lead c-lead--black">
+          reach me through
+          <br class="br-sp" />the links below.
+        </h3>
+      </div>
     </div>
   </section>
 </BaseLayout>

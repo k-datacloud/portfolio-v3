@@ -2,11 +2,11 @@
 
 @use "_common.scss" as *;
 
-html,
-body {
-  height: 100%;
-  overflow: hidden;
-}
+// html,
+// body {
+//   height: 100%;
+//   overflow: hidden;
+// }
 
 .loading {
   width: 100%;
@@ -111,5 +111,58 @@ body {
 
 .p-top-cta {
   width: 100%;
-  height: 100vh;
+
+  &__wrapper {
+    padding-left: clamp(16px, calc(-1.849px + 4.76vw), 120px);
+    padding-right: clamp(16px, calc(-1.849px + 4.76vw), 120px);
+  }
+
+  &__container {
+    padding: 180px 36px 80px;
+    background-color: #eaeaea;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    @include respond-to("lg") {
+      top: 32px;
+      right: 32px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &__lead {
+    text-align: center;
+    margin-bottom: calc(40 / 16 * 1rem);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include respond-to("lg") {
+      margin-bottom: calc(48 / 16 * 1rem);
+    }
+  }
+
+  &__image {
+    margin-bottom: calc(40 / 16 * 1rem);
+
+    @include respond-to("lg") {
+      margin-bottom: calc(48 / 16 * 1rem);
+    }
+  }
+
+  &__text {
+    text-align: center;
+    margin-bottom: calc(80 / 16 * 1rem);
+  }
 }

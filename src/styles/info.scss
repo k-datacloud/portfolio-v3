@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+@use "_common.scss" as *;
+
+.p-info-cta {
+  width: 100%;
+
+  &__wrapper {
+    padding-left: clamp(16px, calc(7.549px + 2.254vw), 40px);
+    padding-right: clamp(16px, calc(7.549px + 2.254vw), 40px);
+  }
+
+  &__container {
+    padding: 180px 36px 80px;
+    background-color: #eaeaea;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    @include respond-to("lg") {
+      top: 32px;
+      right: 32px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &__lead {
+    text-align: center;
+    margin-bottom: calc(40 / 16 * 1rem);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include respond-to("lg") {
+      margin-bottom: calc(48 / 16 * 1rem);
+    }
+  }
+
+  &__image {
+    margin-bottom: calc(40 / 16 * 1rem);
+
+    @include respond-to("lg") {
+      margin-bottom: calc(48 / 16 * 1rem);
+    }
+  }
+
+  &__text {
+    text-align: center;
+    margin-bottom: calc(80 / 16 * 1rem);
+  }
+}

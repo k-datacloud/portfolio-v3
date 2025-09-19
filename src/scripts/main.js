@@ -21,18 +21,18 @@ const mainScript = () => {
     const main = document.querySelector(".main");
     const loading = document.querySelector(".js-loading");
     const kvTagText = document.querySelectorAll(".p-top-kv__tag-line");
-    gsap.set([html, body], {
-      overflow: "hidden",
-      height: "100%",
-    });
+    // gsap.set([html], {
+    //   overflow: "hidden",
+    //   height: "100%",
+    // });
     gsap.set(loading, {
       display: "block",
       opacity: 1,
       pointerEvents: "auto",
     });
-    gsap.set(main, {
-      pointerEvents: "none",
-    });
+    // gsap.set(main, {
+    //   pointerEvents: "none",
+    // });
     gsap.set(kvTagText, {
       yPercent: 100,
     });
@@ -185,7 +185,7 @@ const mainScript = () => {
           duration: 1.5,
           ease: "power2.out",
           onComplete: () => {
-            gsap.set([html, body], {
+            gsap.set([html], {
               overflow: "auto",
               height: "auto",
             });
