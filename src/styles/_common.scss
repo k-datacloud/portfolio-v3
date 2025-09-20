@@ -204,6 +204,10 @@ body {
   &--black {
     color: #080807;
   }
+
+  &--sm {
+    font-size: clamp(0.75rem, 0.706rem + 0.1878vw, 0.875rem);
+  }
 }
 
 .c-cta-button {
@@ -266,6 +270,35 @@ body {
     flex-direction: column;
   }
 
+  .footer-top {
+    margin-bottom: 120px;
+    position: relative;
+
+    @include respond-to("lg") {
+      margin-bottom: 0;
+    }
+
+    .footer-sign {
+      width: 80px;
+      margin-left: auto;
+      margin-top: calc(64 / 16 * 1rem);
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      @include respond-to("lg") {
+        width: 88px;
+        position: absolute;
+        top: 152px;
+        right: 0;
+        margin-top: 0;
+      }
+    }
+  }
+
   &__info {
     display: flex;
     justify-content: space-between;
@@ -281,13 +314,18 @@ body {
   }
 
   .footer-bottom {
-    margin-top: auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include respond-to("lg") {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &__image {
-    width: 50%;
+    width: calc(50% - 20px);
 
     @include respond-to("lg") {
       width: calc(256 / 1440 * 100vw);
@@ -297,6 +335,85 @@ body {
       width: 100%;
       height: auto;
       display: block;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+
+    .footer__links-wrapper {
+      margin-top: auto;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    margin-bottom: calc(48 / 16 * 1rem);
+
+    @include respond-to("lg") {
+      gap: 218px;
+      margin-bottom: calc(40 / 16 * 1rem);
+    }
+
+    .footer-list {
+      width: 50%;
+
+      @include respond-to("lg") {
+        width: auto;
+      }
+      &__tag {
+        display: inline-block;
+        color: #636363;
+        margin-bottom: 8px;
+      }
+
+      &__link {
+        display: flex;
+        width: fit-content;
+
+        .text-wrapper {
+          position: relative;
+        }
+      }
+
+      &__text {
+        &--default {
+          display: inline-block;
+        }
+
+        &--hover {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .footer-meta {
+    display: flex;
+    margin-bottom: calc(80 / 16 * 1rem);
+
+    @include respond-to("lg") {
+      margin-bottom: 0;
+    }
+
+    &__item {
+      width: 50%;
+
+      @include respond-to("lg") {
+        width: auto;
+      }
+    }
+
+    @include respond-to("lg") {
+      gap: 218px;
+    }
+
+    &__text {
+      font-size: 14px;
     }
   }
 }

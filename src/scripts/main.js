@@ -201,36 +201,23 @@ const mainScript = () => {
 
     openingAnimation();
 
-    const paper = document.querySelector(".js-paper");
-    if (!paper) return;
-    paper.addEventListener("click", () => {
-      gsap.to(paper, {
-        rotateX: -180,
-        rotateY: -180,
-        duration: 1,
-        ease: "power3.out",
+    const hover = document.querySelectorAll(".js-hover");
+    const defaultText = document.querySelectorAll(
+      ".text-wrapper .footer-list__text--default"
+    );
+    const hoverText = document.querySelectorAll(
+      ".text-wrapper .footer-list__text--hover"
+    );
+
+    hover.forEach((item, index) => {
+      item.addEventListener("mouseenter", () => {
+        defaultText[index].classList.add("hidden");
+        hoverText[index].classList.remove("hidden");
       });
-    });
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const intro = document.querySelector(".p-top-intro");
-    const apple = document.querySelector(".apple");
-    const scrollY = window.scrollY / 100;
-    if (!apple) return;
-    gsap.set(apple, {
-      backgroundPosition: "50% -40px",
-    });
-    gsap.to(apple, {
-      backgroundPosition: `50% 40px`,
-      ease: "none",
-      scrollTrigger: {
-        trigger: intro,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-        markers: true,
-      },
+      item.addEventListener("mouseleave", () => {
+        defaultText[index].classList.remove("hidden");
+        hoverText[index].classList.add("hidden");
+      });
     });
   }
 };
