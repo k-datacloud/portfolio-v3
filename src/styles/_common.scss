@@ -278,6 +278,34 @@ body {
       margin-bottom: 0;
     }
 
+    .footer-top-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: calc(160 / 16 * 1rem);
+
+      @include respond-to("lg") {
+        margin-bottom: calc(80 / 16 * 1rem);
+      }
+
+      &__mail--sp {
+        display: block;
+
+        @include respond-to("lg") {
+          display: none;
+        }
+      }
+
+      &__mail--pc {
+        display: none;
+
+        @include respond-to("lg") {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+        }
+      }
+    }
+
     .footer-sign {
       width: 80px;
       margin-left: auto;
@@ -296,16 +324,6 @@ body {
         right: 0;
         margin-top: 0;
       }
-    }
-  }
-
-  &__info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: calc(160 / 16 * 1rem);
-
-    @include respond-to("lg") {
-      margin-bottom: calc(128 / 16 * 1rem);
     }
   }
 
