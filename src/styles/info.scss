@@ -45,12 +45,14 @@
     text-transform: uppercase;
   }
 
-  &__tag {
-    background-color: #eaeaea;
-    padding: 8px 42px;
-    border-radius: 20px;
-    color: #080807;
-    font-size: 12px;
+  .scrolldown {
+    &__text {
+      background-color: #eaeaea;
+      padding: 8px 42px;
+      border-radius: 20px;
+      color: #080807;
+      font-size: 12px;
+    }
   }
 }
 
@@ -99,26 +101,33 @@
   }
 
   &__lead {
+    margin-bottom: calc(120 / 16 * 1rem);
     @include respond-to("lg") {
       margin-bottom: calc(160 / 16 * 1rem);
     }
   }
   .archive {
     &__item {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom: calc(196 / 16 * 1rem);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
       @include respond-to("lg") {
         display: grid;
         grid-template-columns: repeat(10, 1fr);
         column-gap: 20px;
         margin-bottom: calc(280 / 16 * 1rem);
-
-        &:last-child {
-          margin-bottom: 0;
-        }
       }
     }
 
     &__heading {
+      grid-column: 1 / 3;
+      margin-bottom: calc(96 / 16 * 1rem);
       @include respond-to("lg") {
+        margin-bottom: 0;
         grid-column-start: 2;
         grid-column-end: 4;
       }
@@ -149,7 +158,11 @@
     }
 
     &__label {
+      display: grid;
+      grid-template-rows: repeat(2, auto);
+      row-gap: 64px;
       @include respond-to("lg") {
+        width: auto;
         grid-column-start: 5;
         grid-column-end: 7;
         display: flex;
@@ -159,7 +172,11 @@
     }
 
     &__content {
+      display: grid;
+      grid-template-rows: repeat(2, auto);
+      row-gap: 64px;
       @include respond-to("lg") {
+        width: auto;
         grid-column-start: 8;
         grid-column-end: 11;
         display: flex;
