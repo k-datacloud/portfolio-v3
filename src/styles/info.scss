@@ -3,6 +3,7 @@
 @use "_common.scss" as *;
 
 .p-info-kv {
+  height: 100svh;
   @include respond-to("lg") {
     width: 100%;
     height: 100vh;
@@ -13,8 +14,14 @@
     height: 100%;
     padding-top: 32px;
     padding-bottom: 32px;
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   &__top {
@@ -30,17 +37,27 @@
     }
   }
 
-  &__foot {
+  &__badge {
+    position: absolute;
+    right: 0;
+    bottom: -48px;
+
     @include respond-to("lg") {
-      margin-top: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      bottom: 0px;
     }
   }
 
+  &__main {
+    margin-top: auto;
+    // @include respond-to("lg") {
+    //   display: flex;
+    //   justify-content: space-between;
+    //   align-items: flex-end;
+    // }
+  }
+
   &__title {
-    font-size: 280px;
+    font-size: clamp(6.25rem, 3.0357rem + 16.0714vw, 17.5rem);
     letter-spacing: -0.02em;
     text-transform: uppercase;
   }
@@ -57,19 +74,38 @@
 }
 
 .p-info-profile {
+  &__wrapper {
+    padding-top: 160px;
+    padding-bottom: 96px;
+
+    @include respond-to("lg") {
+      padding-top: 160px;
+      padding-bottom: 160px;
+    }
+  }
   &__image {
     display: flex;
     gap: 16px;
+    margin-bottom: calc(32 / 16 * 1rem);
 
-    @include respond-to("lg") {
-      margin-bottom: calc(32 / 16 * 1rem);
-    }
     .l-image {
-      width: 110px;
+      width: 96px;
+
+      @include respond-to("lg") {
+        width: 110px;
+      }
 
       img {
         width: 100%;
       }
+    }
+  }
+
+  &__description {
+    max-width: 400px;
+
+    @include respond-to("lg") {
+      max-width: none;
     }
   }
 
@@ -232,10 +268,21 @@
   }
 
   &__image {
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: calc(40 / 16 * 1rem);
+    background-image: url("/img/p-info-cta-sp.jpg");
+    background-repeat: no-repeat;
+    background-position: center 20%;
+    aspect-ratio: 3 / 2;
+    width: calc(240 / 375 * 100vw);
+    max-width: 360px;
 
     @include respond-to("lg") {
+      background-image: url("/img/p-info-cta.jpg");
       margin-bottom: calc(48 / 16 * 1rem);
+      width: calc(320 / 1440 * 100vw);
+      max-width: 400px;
     }
   }
 

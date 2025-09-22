@@ -36,12 +36,12 @@ import Loading from "../components/Loading.astro";
   <section class="p-top-kv">
     <div class="l-wrapper p-top-kv__wrapper">
       <div class="p-top-kv__head">
-        <div class="time">
+        <div class="p-top-kv__time">
           <span class="c-text"
             >Tokyo, Japan 8<span class="blink">:</span>21 AM</span
           >
         </div>
-        <div class="name">
+        <div class="p-top-kv__name">
           <span class="c-text">K.S</span>
           <span class="c-text">Developer, Designer</span>
         </div>
@@ -68,6 +68,50 @@ import Loading from "../components/Loading.astro";
     </div>
   </section>
 
+  <section class="p-top-intro">
+    <div class="l-wrapper p-top-intro__wrapper">
+      <div class="p-top-intro__head">
+        <h2 class="c-heading p-top-intro__title">
+          Any
+          <br class="br-sp" />future plan?
+          <br />Who cares
+        </h2>
+        <h3 class="c-lead p-top-intro__lead">Me? I’m..</h3>
+      </div>
+      <div class="p-top-intro__main">
+        <div class="p-top-intro__content">
+          <div class="l-image">
+            <img src="/img/p-top-intro-01.jpg" alt="" />
+          </div>
+          <div class="p-top-intro__desc">
+            <p class="c-text">
+              My name is Kaisei Sadatoki. I mainly work on the front end —
+              writing code and creating designs.
+            </p>
+            <p class="c-text">
+              I’m drawn to interactive and modern designs — the kind with
+              striking motion and animation. I also enjoy design beyond the web:
+              typography-driven layouts, minimal aesthetics, and clean
+              structure.
+            </p>
+          </div>
+        </div>
+        <div class="p-top-intro__badge">
+          <div class="l-image">
+            <img src="/img/p-top-intro-02.jpg" alt="" />
+          </div>
+          <div>
+            <p class="c-text">
+              Well.. sure it would be nice though
+              <br />if I got getting featured on Awwwards
+              <br />or something.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="p-top-project">
     <div class="l-wrapper p-top-project__wrapper">
       <div class="p-top-project__head">
@@ -86,10 +130,28 @@ import Loading from "../components/Loading.astro";
               <span class="project-card__number">01</span>
               <span class="project-card__desc">third version</span>
             </div>
-            <div class="project-card__project"></div>
+            <a class="project-card__project" href="/" target="_blank"></a>
           </div>
           <div class="project-card__side">
             <p class="project-card__project-name c-heading">portfolio</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-card__content project-card__content--odd">
+            <div class="project-card__info">
+              <span class="project-card__number">02</span>
+              <span class="project-card__desc">stay tuned</span>
+            </div>
+            <div class="project-card__project project-card__project--coming">
+              <img src="/img/plus-icon.svg" alt="" />
+            </div>
+          </div>
+          <div class="project-card__side project-card__side--odd">
+            <p
+              class="project-card__project-name project-card__project-name--odd c-heading"
+            >
+              coming project
+            </p>
           </div>
         </article>
       </div>
@@ -116,7 +178,7 @@ import Loading from "../components/Loading.astro";
           (guess i was a bit harsh.)
         </h3>
         <div class="l-image p-top-cta__image">
-          <img src="" alt="" />
+          <img src="/img/p-top-cta.jpg" alt="" />
         </div>
         <p class="p-top-cta__text c-text c-text--black">
           Honestly… that feels really nice.

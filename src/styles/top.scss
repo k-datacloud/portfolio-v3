@@ -59,6 +59,11 @@
     justify-content: space-between;
   }
 
+  &__name {
+    display: flex;
+    gap: 40px;
+  }
+
   &__body {
     @include respond-to("lg") {
       height: calc(100% - 24px);
@@ -108,37 +113,75 @@
 
 .p-top-intro {
   width: 100%;
-  height: 100vh;
-  perspective: 1000px;
 
-  .paper {
-    width: 200px;
-    height: 200px;
-    background-color: #ffffff;
-    transform-origin: top left;
-    // transform: rotate(-4deg);
-    animation: swing 3s ease-in-out infinite;
+  &__head {
+    margin-bottom: calc(120 / 16 * 1rem);
+    // @include respond-to("lg") {
+    //   margin-bottom: calc(120 / 16 * 1rem);
+    // }
   }
 
-  @keyframes swing {
-    0% {
-      transform: rotate(-4deg);
-    }
-    50% {
-      transform: rotate(4deg);
-    }
-    100% {
-      transform: rotate(-4deg);
+  &__main {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 20px;
+    row-gap: 120px;
+    grid-template-rows: repeat(2, auto);
+    @include respond-to("lg") {
+      grid-template-columns: repeat(12, 1fr);
     }
   }
 
-  .apple {
-    background-image: url("../assets/image/priscilla-du-preez-CoqJGsFVJtM-unsplash\ 4.png");
-    width: 320px;
-    height: 214px;
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-size: cover;
+  &__content {
+    grid-column: 1 / 6;
+    @include respond-to("lg") {
+      grid-column: 5 / 9;
+    }
+
+    .l-image {
+      width: 100%;
+      margin-bottom: calc(48 / 16 * 1rem);
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+  }
+
+  &__badge {
+    grid-column: 3 / 6;
+    grid-row: 2;
+    @include respond-to("lg") {
+      grid-column: 11 / 13;
+      grid-row: 2;
+    }
+
+    .l-image {
+      width: 100%;
+      margin-bottom: calc(16 / 16 * 1rem);
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+
+    .c-text {
+      font-size: clamp(0.625rem, 0.4643rem + 0.1786vw, 0.75rem);
+    }
+  }
+
+  &__title {
+    margin-bottom: calc(16 / 16 * 1rem);
+  }
+
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 }
 
@@ -159,11 +202,16 @@
     column-gap: 20px;
     grid-template-columns: 1fr;
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto calc(96 / 16 * 1rem);
     @include respond-to("lg") {
       max-width: none;
       grid-template-columns: repeat(10, 1fr);
       column-gap: 32px;
+      margin-bottom: calc(120 / 16 * 1rem);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
     }
 
     &__side {
@@ -171,8 +219,15 @@
       @include respond-to("lg") {
         grid-column: 1 / 7;
         grid-row: 1;
+        margin-top: 0;
         margin-bottom: calc(16 / 16 * 1rem);
         align-self: end;
+      }
+
+      &--odd {
+        @include respond-to("lg") {
+          grid-column: 5 / 11;
+        }
       }
     }
 
@@ -182,6 +237,12 @@
       @include respond-to("lg") {
         text-align: right;
       }
+
+      &--odd {
+        @include respond-to("lg") {
+          text-align: left;
+        }
+      }
     }
 
     &__content {
@@ -190,6 +251,12 @@
       @include respond-to("lg") {
         grid-column: 7 / 11;
         grid-row: 1;
+      }
+
+      &--odd {
+        @include respond-to("lg") {
+          grid-column: 1 / 5;
+        }
       }
     }
 
@@ -216,8 +283,29 @@
     }
 
     &__project {
+      display: block;
       height: calc(100% - 40px);
       background-color: #eaeaea;
+      position: relative;
+
+      &--coming {
+        background-color: transparent;
+        border: 1px solid #d1d1c7;
+      }
+
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: auto;
+        display: block;
+
+        @include respond-to("lg") {
+          width: 80px;
+        }
+      }
     }
   }
 }
@@ -268,9 +356,20 @@
 
   &__image {
     margin-bottom: calc(40 / 16 * 1rem);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+    width: calc(240 / 375 * 100vw);
 
     @include respond-to("lg") {
       margin-bottom: calc(48 / 16 * 1rem);
+      width: calc(320 / 1440 * 100vw);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
   }
 

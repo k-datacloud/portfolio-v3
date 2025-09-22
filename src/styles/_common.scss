@@ -141,10 +141,15 @@ body {
 .l-wrapper {
   width: 100%;
   margin: 0 auto;
-  padding-top: 180px;
-  padding-bottom: 180px;
+  padding-top: 120px;
+  padding-bottom: 120px;
   padding-left: clamp(20px, calc(6.957px + 3.478vw), 96px);
   padding-right: clamp(20px, calc(6.957px + 3.478vw), 96px);
+
+  @include respond-to("lg") {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
 }
 
 .text-wrapper {
@@ -163,6 +168,13 @@ body {
 .br-pc {
   display: none;
 
+  @include respond-to("lg") {
+    display: block;
+  }
+}
+
+.is-pc {
+  display: none;
   @include respond-to("lg") {
     display: block;
   }
