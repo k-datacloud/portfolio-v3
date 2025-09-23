@@ -415,8 +415,17 @@ body {
 
         &--hover {
           position: absolute;
-          top: 100%;
+          // top: 100%;
           left: 0;
+          display: inline-block;
+        }
+      }
+
+      &__icon {
+        display: inline-block;
+        &--hover {
+          position: absolute;
+          right: 0;
           display: inline-block;
         }
       }
