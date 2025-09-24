@@ -202,6 +202,37 @@ const mainScript = () => {
   //   openingAnimation();
   // }
 
+  // location time
+  let currentTime;
+  async function getLocationTime() {
+    const response = await fetch(
+      "https://worldtimeapi.org/api/timezone/Asia/Tokyo"
+    );
+    const data = await response.json();
+    currentTime = new Date(data.datetime);
+  }
+
+  async function init() {
+    await getLocationTime(); // ここで取得完了を待つ
+    updateDisplay(); // ここで初回表示
+    setInterval(() => {
+      currentTime.setMinutes(currentTime.getMinutes() + 1);
+      updateDisplay();
+    }, 60000);
+  }
+
+  const updateDisplay = () => {
+    const hour = currentTime.getHours();
+    const minute = currentTime.getMinutes();
+    const ampm = hour >= 12 ? "PM" : "AM";
+
+    document.querySelector(".js-time-hour").textContent = hour;
+    document.querySelector(".js-time-minute").textContent = minute;
+    document.querySelector(".js-time-ampm").textContent = ampm;
+  };
+
+  init();
+
   //footer
   const hoverToggle = document.querySelectorAll(".js-hover-toggle");
   const defaultText = document.querySelectorAll(".js-hover-default");

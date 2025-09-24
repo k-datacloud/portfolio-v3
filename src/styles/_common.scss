@@ -263,6 +263,36 @@ body {
   }
 }
 
+.c-nameplate {
+  display: flex;
+  gap: 24px;
+}
+
+.c-location-time {
+  display: flex;
+  gap: 4px;
+
+  &__time {
+    display: flex;
+    gap: 0px;
+  }
+  .blink {
+    animation: blink 1.5s infinite;
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
 //footer
 
 .footer {
@@ -271,6 +301,7 @@ body {
 
   @include respond-to("lg") {
     height: 100vh;
+    min-height: 800px;
   }
 
   &__wrapper {
