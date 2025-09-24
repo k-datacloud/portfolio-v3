@@ -9,29 +9,23 @@ import Loading from "../components/Loading.astro";
   title="Kaisei Sadatoki | Portfolio site "
   description="My Portfolio"
 >
-  <!-- <Fragment slot="loader">
+  <Fragment slot="loader">
     <Loading />
-  </Fragment> -->
-  <!-- <section class="p-top-kv">
-    <div class="l-wrapper p-top-kv__wrapper">
-      <div class="p-top-kv__body"></div>
-      <div class="p-top-kv__bottom">
-        <p class="p-top-kv__tag">
-          <span class="text-wrapper">
-            <span class="p-top-kv__tag-line">
-              I’m trying to make something.</span
-            >
-          </span>
-          <span class="text-wrapper">
-            <span class="p-top-kv__tag-line">Not just for you.</span>
-          </span>
-          <span class="text-wrapper">
-            <span class="p-top-kv__tag-line">Maybe not even for me.</span>
-          </span>
-        </p>
-      </div>
-    </div>
-  </section> -->
+  </Fragment>
+
+  <div class="c-menu-toggle">
+    <button type="button" class="c-menu-toggle__button">
+      <span class="circle"></span>
+      <span class="text-wrapper">
+        <span class="c-text c-menu-toggle__text c-menu-toggle__text--default"
+          >menu</span
+        >
+        <span class="c-text c-menu-toggle__text c-menu-toggle__text--hover"
+          >menu</span
+        >
+      </span>
+    </button>
+  </div>
 
   <section class="p-top-kv">
     <div class="l-wrapper p-top-kv__wrapper">
@@ -42,7 +36,7 @@ import Loading from "../components/Loading.astro";
           </div>
           <div class="c-location-time__time">
             <span class="c-text js-time-hour"></span>
-            <span class="blink">:</span>
+            <span class="c-text blink">:</span>
             <span class="c-text js-time-minute"></span>
           </div>
           <div>
@@ -126,9 +120,9 @@ import Loading from "../components/Loading.astro";
         <h2 class="c-heading p-top-project__title">Featured Works?</h2>
         <h3 class="c-lead p-top-project__lead">
           Honestsly i don’t have
-          <br class="br-pc" />much to show yet but I
-          <br class="br-pc" />hope to grow this project
-          <br class="br-pc" />list along the way.
+          <br class="" />much to show yet but I
+          <br class="" />hope to grow this project
+          <br class="" />list along the way.
         </h3>
       </div>
       <div class="p-top-project__main">
