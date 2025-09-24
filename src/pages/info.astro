@@ -14,9 +14,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="p-info-kv__top">
           <div class="kv-top-bar">
             <div class="c-location-time js-location-time">
-              <span class="c-text"
-                >Tokyo, Japan 20<span class="blink">:</span>54 PM</span
-              >
+              <div class="c-location-time__location">
+                <span class="c-text">Tokyo, Japan</span>
+              </div>
+              <div class="c-location-time__time">
+                <span class="c-text js-time-hour"></span>
+                <span class="blink">:</span>
+                <span class="c-text js-time-minute"></span>
+              </div>
+              <div>
+                <span class="c-text js-time-ampm"></span>
+              </div>
             </div>
             <div class="c-nameplate">
               <span class="c-text">K.S</span>

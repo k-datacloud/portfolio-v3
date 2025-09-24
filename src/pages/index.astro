@@ -37,9 +37,17 @@ import Loading from "../components/Loading.astro";
     <div class="l-wrapper p-top-kv__wrapper">
       <div class="p-top-kv__head">
         <div class="c-location-time js-location-time">
-          <span class="c-text"
-            >Tokyo, Japan 20<span class="blink">:</span>54 PM</span
-          >
+          <div class="c-location-time__location">
+            <span class="c-text">Tokyo, Japan</span>
+          </div>
+          <div class="c-location-time__time">
+            <span class="c-text js-time-hour"></span>
+            <span class="blink">:</span>
+            <span class="c-text js-time-minute"></span>
+          </div>
+          <div>
+            <span class="c-text js-time-ampm"></span>
+          </div>
         </div>
         <div class="c-nameplate">
           <span class="c-text">K.S</span>

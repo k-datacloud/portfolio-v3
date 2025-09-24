@@ -226,9 +226,15 @@ const mainScript = () => {
     const minute = currentTime.getMinutes();
     const ampm = hour >= 12 ? "PM" : "AM";
 
-    document.querySelector(".js-time-hour").textContent = hour;
-    document.querySelector(".js-time-minute").textContent = minute;
-    document.querySelector(".js-time-ampm").textContent = ampm;
+    const localTime = document.querySelectorAll(".js-location-time");
+    localTime.forEach((time, index) => {
+      const localHour = time.querySelector(".js-time-hour");
+      const localMinute = time.querySelector(".js-time-minute");
+      const localAmpm = time.querySelector(".js-time-ampm");
+      localHour.textContent = hour;
+      localMinute.textContent = minute;
+      localAmpm.textContent = ampm;
+    });
   };
 
   init();
