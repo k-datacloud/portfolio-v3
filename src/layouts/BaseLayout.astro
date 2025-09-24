@@ -2,6 +2,7 @@
 const { bodyClass, title, description } = Astro.props;
 import { ClientRouter } from "astro:transitions";
 import Footer from "../components/Footer.astro";
+import NavMenu from "../components/NavMenu.astro";
 ---
 
 <html>
@@ -32,6 +33,7 @@ import Footer from "../components/Footer.astro";
       </filter>
     </svg>
     <slot name="loader" />
+    <NavMenu />
     <main class="main">
       <slot />
     </main>

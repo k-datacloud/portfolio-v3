@@ -3,9 +3,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const mainScript = () => {
-  console.log("とんかつの作り方を学ぼう");
+  gsap.registerPlugin(ScrollTrigger);
 
-  // Lenis smooth scrolling
+  //Lenis smooth scrolling
   const runLenis = () => {
     const lenis = new Lenis({
       autoRaf: true,
@@ -15,196 +15,268 @@ const mainScript = () => {
     });
   };
 
-  if (window.location.pathname === "/") {
-    const html = document.querySelector("html");
-    const body = document.querySelector("body");
-    const main = document.querySelector(".main");
-    const loading = document.querySelector(".js-loading");
-    const kvTagText = document.querySelectorAll(".p-top-kv__tag-line");
-    // gsap.set([html], {
-    //   overflow: "hidden",
-    //   height: "100%",
-    // });
-    gsap.set(loading, {
-      display: "block",
-      opacity: 1,
-      pointerEvents: "auto",
-    });
-    // gsap.set(main, {
-    //   pointerEvents: "none",
-    // });
-    gsap.set(kvTagText, {
-      yPercent: 100,
-    });
+  const footer = document.querySelector(".footer");
 
-    const digitWrappers = document.querySelectorAll(".js-digit");
-    const digitHeight = digitWrappers[0].getBoundingClientRect().height;
-    const loadingText = document.querySelectorAll(".loading__text");
-    digitWrappers.forEach((item) => {
-      item.style.height = digitHeight + "px";
-    });
+  // if (window.location.pathname === "/") {
+  //   const html = document.querySelector("html");
+  //   const body = document.querySelector("body");
+  //   const main = document.querySelector(".main");
+  //   const loading = document.querySelector(".js-loading");
+  //   const kvTagText = document.querySelectorAll(".p-top-kv__tag-line");
+  //   // gsap.set([html], {
+  //   //   overflow: "hidden",
+  //   //   height: "100%",
+  //   // });
+  //   gsap.set(loading, {
+  //     display: "block",
+  //     opacity: 1,
+  //     pointerEvents: "auto",
+  //   });
+  //   // gsap.set(main, {
+  //   //   pointerEvents: "none",
+  //   // });
+  //   gsap.set(kvTagText, {
+  //     yPercent: 100,
+  //   });
 
-    digitWrappers.forEach((wrapper) => {
-      for (let i = 1; i <= 9; i++) {
-        const span = document.createElement("span");
-        span.classList.add("digit");
-        span.classList.add("loading__text");
-        span.textContent = i;
-        wrapper.appendChild(span);
-      }
+  //   const digitWrappers = document.querySelectorAll(".js-digit");
+  //   const digitHeight = digitWrappers[0].getBoundingClientRect().height;
+  //   const loadingText = document.querySelectorAll(".loading__text");
+  //   digitWrappers.forEach((item) => {
+  //     item.style.height = digitHeight + "px";
+  //   });
 
-      digitWrappers[1].querySelectorAll(".digit").forEach((digit) => {
-        digit.classList.add("digit-one");
-      });
+  //   digitWrappers.forEach((wrapper) => {
+  //     for (let i = 1; i <= 9; i++) {
+  //       const span = document.createElement("span");
+  //       span.classList.add("digit");
+  //       span.classList.add("loading__text");
+  //       span.textContent = i;
+  //       wrapper.appendChild(span);
+  //     }
 
-      digitWrappers[0].querySelectorAll(".digit").forEach((digit) => {
-        digit.classList.add("digit-ten");
-      });
-    });
+  //     digitWrappers[1].querySelectorAll(".digit").forEach((digit) => {
+  //       digit.classList.add("digit-one");
+  //     });
 
-    const digits = document.querySelectorAll(".digit");
-    const digitone = document.querySelectorAll(".digit-one");
-    const digitten = document.querySelectorAll(".digit-ten");
-    const digithundred = document.querySelector(".digit-hundred");
+  //     digitWrappers[0].querySelectorAll(".digit").forEach((digit) => {
+  //       digit.classList.add("digit-ten");
+  //     });
+  //   });
 
-    const openingAnimation = () => {
-      const timeline = gsap.timeline();
-      const digitoneFirst = Math.floor(Math.random() * 9) + 1;
-      const digittenFirst = Math.floor(Math.random() * 8) + 1;
-      const spinDuration = 1.5;
-      const easing = "power1.out";
+  //   const digits = document.querySelectorAll(".digit");
+  //   const digitone = document.querySelectorAll(".digit-one");
+  //   const digitten = document.querySelectorAll(".digit-ten");
+  //   const digithundred = document.querySelector(".digit-hundred");
 
-      gsap.set(digithundred, {
-        yPercent: 100,
-        display: "block",
-      });
+  //   const openingAnimation = () => {
+  //     const timeline = gsap.timeline();
+  //     const digitoneFirst = Math.floor(Math.random() * 9) + 1;
+  //     const digittenFirst = Math.floor(Math.random() * 8) + 1;
+  //     const spinDuration = 1.5;
+  //     const easing = "power1.out";
 
-      timeline.to(
-        digitone,
-        {
-          y: -digitHeight * digitoneFirst,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "start"
-      );
+  //     gsap.set(digithundred, {
+  //       yPercent: 100,
+  //       display: "block",
+  //     });
 
-      timeline.to(
-        digitten,
-        {
-          y: -digitHeight * digittenFirst,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "start"
-      );
+  //     timeline.to(
+  //       digitone,
+  //       {
+  //         y: -digitHeight * digitoneFirst,
+  //         duration: spinDuration,
+  //         ease: easing,
+  //       },
+  //       "start"
+  //     );
 
-      const digitoneSecond = Math.floor(Math.random() * 9) + 1;
-      let digittenSecond =
-        Math.floor(Math.random() * (9 - digittenFirst)) + digittenFirst + 1;
-      if (digittenSecond > 9) digittenSecond === 9;
+  //     timeline.to(
+  //       digitten,
+  //       {
+  //         y: -digitHeight * digittenFirst,
+  //         duration: spinDuration,
+  //         ease: easing,
+  //       },
+  //       "start"
+  //     );
 
-      timeline.to(
-        digitone,
-        {
-          y: -digitHeight * digitoneSecond,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "second"
-      );
+  //     const digitoneSecond = Math.floor(Math.random() * 9) + 1;
+  //     let digittenSecond =
+  //       Math.floor(Math.random() * (9 - digittenFirst)) + digittenFirst + 1;
+  //     if (digittenSecond > 9) digittenSecond === 9;
 
-      timeline.to(
-        digitten,
-        {
-          y: -digitHeight * digittenSecond,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "second"
-      );
+  //     timeline.to(
+  //       digitone,
+  //       {
+  //         y: -digitHeight * digitoneSecond,
+  //         duration: spinDuration,
+  //         ease: easing,
+  //       },
+  //       "second"
+  //     );
 
-      timeline.to(
-        digits,
-        {
-          y: 0,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "final"
-      );
+  //     timeline.to(
+  //       digitten,
+  //       {
+  //         y: -digitHeight * digittenSecond,
+  //         duration: spinDuration,
+  //         ease: easing,
+  //       },
+  //       "second"
+  //     );
 
-      timeline.to(
-        digithundred,
-        {
-          yPercent: 0,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "final"
-      );
+  //     timeline.to(
+  //       digits,
+  //       {
+  //         y: 0,
+  //         duration: spinDuration,
+  //         ease: easing,
+  //       },
+  //       "final"
+  //     );
 
-      timeline.to(loadingText, {
-        clipPath: "inset(0% 0% 100% 0%)",
-        duration: 1.5,
-        ease: "power2.out",
-      });
+  //     timeline.to(
+  //       digithundred,
+  //       {
+  //         yPercent: 0,
+  //         duration: spinDuration,
+  //         ease: easing,
+  //       },
+  //       "final"
+  //     );
 
-      timeline.to(
-        loading,
-        {
-          opacity: 0,
-          pointerEvents: "none",
-          duration: 2,
-          ease: "sine.in",
-          onComplete: () => {
-            gsap.set(loading, {
-              display: "none",
-              opacity: 0,
-              pointerEvents: "none",
-            });
-          },
-        },
-        "view"
-      );
+  //     timeline.to(loadingText, {
+  //       clipPath: "inset(0% 0% 100% 0%)",
+  //       duration: 1.5,
+  //       ease: "power2.out",
+  //     });
 
-      timeline.to(
-        main,
-        {
-          pointerEvents: "auto",
-          duration: 1,
-          ease: "sine.in",
-        },
-        "view"
-      );
+  //     timeline.to(
+  //       loading,
+  //       {
+  //         opacity: 0,
+  //         pointerEvents: "none",
+  //         duration: 2,
+  //         ease: "sine.in",
+  //         onComplete: () => {
+  //           gsap.set(loading, {
+  //             display: "none",
+  //             opacity: 0,
+  //             pointerEvents: "none",
+  //           });
+  //         },
+  //       },
+  //       "view"
+  //     );
 
-      timeline.to(
-        kvTagText,
-        {
-          yPercent: 0,
-          duration: 1.5,
-          ease: "power2.out",
-          onComplete: () => {
-            gsap.set([html], {
-              overflow: "auto",
-              height: "auto",
-            });
-            gsap.set(main, {
-              pointerEvents: "auto",
-            });
-            runLenis();
-          },
-        },
-        "+=0.5"
-      );
-    };
+  //     timeline.to(
+  //       main,
+  //       {
+  //         pointerEvents: "auto",
+  //         duration: 1,
+  //         ease: "sine.in",
+  //       },
+  //       "view"
+  //     );
 
-    openingAnimation();
-  }
+  //     timeline.to(
+  //       kvTagText,
+  //       {
+  //         yPercent: 0,
+  //         duration: 1.5,
+  //         ease: "power2.out",
+  //         onComplete: () => {
+  //           gsap.set([html], {
+  //             overflow: "auto",
+  //             height: "auto",
+  //           });
+  //           gsap.set(main, {
+  //             pointerEvents: "auto",
+  //           });
+  //           runLenis();
+  //         },
+  //       },
+  //       "+=0.5"
+  //     );
+  //   };
+
+  //   openingAnimation();
+  // }
 
   if (window.location.pathname === "/info") {
     runLenis();
+
+    const infoArchive = document.querySelector(".p-info-archive");
+    const infoArchiveTitle = document.querySelector(".p-info-archive__title");
+    gsap.set(infoArchiveTitle, {
+      yPercent: 50,
+    });
+
+    gsap.to(infoArchiveTitle, {
+      yPercent: -10,
+      // ease: "power2.out",
+      scrollTrigger: {
+        trigger: infoArchive,
+        start: "top 80%",
+        end: "bottom 10%",
+        scrub: true,
+      },
+    });
   }
+
+  //menu button and nav
+  const menuToggle = document.querySelector(".js-menu-toggle");
+  gsap.set(menuToggle, {
+    pointerEvents: "none",
+    opacity: 0,
+  });
+
+  gsap.to(menuToggle, {
+    scrollTrigger: {
+      trigger: menuToggle,
+      start: "200 top",
+      end: "bottom bottom",
+      onEnter: () => {
+        gsap.to(menuToggle, {
+          pointerEvents: "auto",
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to(menuToggle, {
+          pointerEvents: "none",
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+        });
+      },
+    },
+  });
+
+  ScrollTrigger.create({
+    trigger: footer,
+    start: "top 20%",
+    markers: true,
+    onEnter: () => {
+      gsap.to(menuToggle, {
+        pointerEvents: "none",
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(menuToggle, {
+        pointerEvents: "auto",
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+      });
+    },
+  });
 
   // location time
   let currentTime;

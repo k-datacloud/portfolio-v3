@@ -121,18 +121,19 @@
 
   &__title {
     display: none;
-    position: absolute;
-    writing-mode: vertical-rl;
-    left: 0;
-    font-size: 128px;
-    color: rgba($color: #141414, $alpha: 0.6);
-    line-height: 1;
-    @include font-satoshi();
-    font-weight: 500;
-    text-transform: uppercase;
 
     @include respond-to("lg") {
       display: block;
+      position: absolute;
+      writing-mode: vertical-rl;
+      top: 50%;
+      left: 0;
+      font-size: clamp(6.25rem, 4.25rem + 3.125vw, 9.25rem);
+      color: rgba($color: #141414, $alpha: 0.6);
+      line-height: 1;
+      @include font-satoshi();
+      font-weight: 500;
+      text-transform: uppercase;
     }
   }
 
@@ -232,7 +233,8 @@
   }
 
   &__container {
-    padding: 180px 36px 80px;
+    padding: clamp(180px, calc(0px + 12.5vw), 320px) 36px
+      clamp(80px, calc(0.286px + 5.536vw), 142px);
     background-color: #eaeaea;
     position: relative;
     z-index: 1;

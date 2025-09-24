@@ -319,7 +319,8 @@
   }
 
   &__container {
-    padding: 180px 36px 80px;
+    padding: clamp(180px, calc(0px + 12.5vw), 320px) 36px
+      clamp(80px, calc(0.286px + 5.536vw), 142px);
     background-color: #eaeaea;
     position: relative;
     z-index: 1;
@@ -339,6 +340,10 @@
   &__title {
     text-align: center;
     margin-bottom: 1rem;
+
+    @include respond-to("xl") {
+      font-size: clamp(6rem, 0.8571rem + 5.7143vw, 10rem);
+    }
   }
 
   &__lead {
@@ -351,6 +356,11 @@
 
     @include respond-to("lg") {
       margin-bottom: calc(48 / 16 * 1rem);
+    }
+
+    @include respond-to("xl") {
+      font-size: clamp(1.5rem, 0.2143rem + 1.4286vw, 2.5rem);
+      margin-bottom: clamp(48px, calc(-13.714px + 4.286vw), 96px);
     }
   }
 
