@@ -1,6 +1,7 @@
 ---
 import "../styles/info.scss";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Cta from "../components/Cta.astro";
 ---
 
 <BaseLayout
@@ -132,44 +133,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
     </div>
   </section>
-  <section class="p-info-cta">
-    <div class="l-wrapper p-info-cta__wrapper">
-      <div class="p-info-cta__container">
-        <a
-          class="c-cta-button p-info-cta__button"
-          href="mailto:k25ts09@outlook.jp"
-        >
-          <span class="text-wrapper">
-            <span class="c-cta-button__wrapper"
-              >Say hello
-              <img src="/img/arrow-right-top.svg" alt="" />
-            </span>
-            <span class="c-cta-button__wrapper c-cta-button__wrapper--hover"
-              >Say hello
-              <img src="/img/arrow-right-top.svg" alt="" />
-            </span>
-          </span>
-        </a>
-        <h2 class="p-info-cta__title c-heading c-heading--black">
-          let's collaborate
-        </h2>
-        <h3 class="p-info-cta__lead p-info-cta__lead-top c-lead c-lead--black">
-          (anything i can help with?)
-        </h3>
-        <div class="l-image p-info-cta__image">
-          <img src="" alt="" />
-        </div>
-        <p class="p-info-cta__text c-text c-text--black">
-          I'm looking forward to new conversations,
-          <br />new ideas, and building something together.
-        </p>
-        <h3
-          class="p-info-cta__lead p-info-cta__lead-bottom c-lead c-lead--black"
-        >
-          don’t be shy —
-          <br class="br-sp" />I’d love to hear from you.
-        </h3>
-      </div>
-    </div>
-  </section>
+
+  <Cta
+    buttonText="Say hello"
+    buttonLink="mailto:k25ts09@outlook.jp"
+    title="let's collaborate"
+    leadTop="(anything i can help with?)"
+    leadBottom={`don't be shy —<br class='br-sp' />I'd love to hear from you.`}
+    description={`I'm looking forward to new conversations,<br />new ideas, and building something together.`}
+    background={false}
+    icon="/img/arrow-right-top.svg"
+  />
 </BaseLayout>

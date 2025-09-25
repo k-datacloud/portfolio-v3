@@ -1,0 +1,56 @@
+---
+const {
+  buttonText,
+  buttonLink,
+  title,
+  leadTop,
+  leadBottom,
+  description,
+  asImage,
+  image,
+  icon,
+} = Astro.props;
+---
+
+<section class="c-cta js-cta">
+  <div class="l-wrapper c-cta__wrapper">
+    <div class="c-cta__container">
+      <a class="c-cta-button c-cta__button" href={buttonLink}>
+        <span class="text-wrapper">
+          <span class="c-cta-button__wrapper"
+            >{buttonText}
+            <img src={icon} alt="" aria-hidden="true" />
+          </span>
+          <span class="c-cta-button__wrapper c-cta-button__wrapper--hover"
+            >{buttonText}
+            <img src={icon} alt="" aria-hidden="true" />
+          </span>
+        </span>
+      </a>
+      <h2 class="c-cta__title c-heading c-heading--black">{title}</h2>
+      <h3
+        class="c-cta__lead c-cta__lead-top c-lead c-lead--black"
+        set:html={leadTop}
+      />
+      <div
+        class={asImage
+          ? "l-image c-cta__image"
+          : "l-image c-cta__image c-cta__image--bg js-cta-image"}
+      >
+        {asImage ? <img src={image} alt="" /> : null}
+        {
+          asImage ? (
+            <span class="c-cta-mask js-cta-mask swing">
+              <span class="c-cta-mask__text">(Nothings fancy)</span>
+            </span>
+          ) : null
+        }
+      </div>
+      <p class="c-cta__text c-text c-text--black" set:html={description} />
+      <h3
+        class="c-cta__lead c-cta__lead-bottom c-lead c-lead--black"
+        set:html={leadBottom}
+      />
+    </div>
+  </div>
+</section>

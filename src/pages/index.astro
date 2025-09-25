@@ -2,6 +2,7 @@
 import "../styles/top.scss";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Loading from "../components/Loading.astro";
+import Cta from "../components/Cta.astro";
 ---
 
 <BaseLayout
@@ -9,9 +10,9 @@ import Loading from "../components/Loading.astro";
   title="Kaisei Sadatoki | Portfolio site "
   description="My Portfolio"
 >
-  <!-- <Fragment slot="loader">
+  <Fragment slot="loader">
     <Loading />
-  </Fragment> -->
+  </Fragment>
 
   <section class="p-top-kv">
     <div class="l-wrapper p-top-kv__wrapper">
@@ -146,7 +147,19 @@ import Loading from "../components/Loading.astro";
     </div>
   </section>
 
-  <section class="p-top-cta">
+  <Cta
+    buttonText="If you care"
+    buttonLink="info"
+    title="still here?"
+    leadTop="(guess i was a bit harsh.)"
+    leadBottom="reach me through <br class='br-sp' />the links below."
+    description="Honestly… that feels really nice.<br />If you’d like, we could build something together."
+    asImage={true}
+    image="/img/p-top-cta.jpg"
+    icon="/img/arrow-right.svg"
+  />
+
+  <!-- <section class="p-top-cta">
     <div class="l-wrapper p-top-cta__wrapper">
       <div class="p-top-cta__container">
         <a class="c-cta-button p-top-cta__button" href="info">
@@ -178,5 +191,5 @@ import Loading from "../components/Loading.astro";
         </h3>
       </div>
     </div>
-  </section>
+  </section> -->
 </BaseLayout>
