@@ -204,46 +204,68 @@ const mainScript = () => {
 
     // openingAnimation();
 
-    const cta = document.querySelector(".c-cta");
-    const ctaMask = document.querySelector(".js-cta-mask");
-    const sectionTitle = document.querySelectorAll(".js-section-title");
-    sectionTitle.forEach((title) => {
-      const letter = title.textContent.trim().split("");
-      title.textContent = "";
-      letter.forEach((char) => {
-        const span = document.createElement("span");
-        if (char === " ") {
-          span.innerHTML = "&nbsp;";
-        } else {
-          span.textContent = char;
-        }
-        span.classList.add("c-char");
-        title.append(span);
+    // Works section
+    const onProject = document.querySelectorAll(".js-on-project");
+    onProject.forEach((project) => {
+      gsap.set(project, {
+        clipPath: "inset(0 100% 0 0)",
+      });
+      gsap.to(project, {
+        clipPath: "inset(0 0% 0 0)",
+        scrollTrigger: {
+          trigger: project,
+          start: "top 95%",
+          end: "top 10%",
+          scrub: true,
+          markers: true,
+        },
       });
     });
-    const char = document.querySelectorAll(".c-char");
-    gsap.set(char, {
-      yPercent: 100,
-      opacity: 0,
-    });
 
-    gsap.to(char, {
-      scrollTrigger: {
-        trigger: cta,
-        start: "top 40%",
-        end: "bottom top",
-        markers: true,
-        onEnter: () => {
-          gsap.to(char, {
-            yPercent: 0,
-            opacity: 1,
-            ease: "power2.out",
-            duration: 0.5,
-            stagger: 0.05,
-          });
-        },
-      },
-    });
+    // Cta section
+    const cta = document.querySelector(".c-cta");
+    const ctaMask = document.querySelector(".js-cta-mask");
+    // const sectionTitle = document.querySelectorAll(".js-section-title");
+    // sectionTitle.forEach((title) => {
+    //   const letter = title.textContent.trim().split("");
+    //   title.textContent = "";
+    //   letter.forEach((char) => {
+    //     const span = document.createElement("span");
+    //     if (char === " ") {
+    //       span.innerHTML = "&nbsp;";
+    //     } else if (char === "\n") {
+    //       span.innerHTML = "<br>";
+    //     } else {
+    //       span.textContent = char;
+    //     }
+    //     span.classList.add("c-char");
+    //     title.append(span);
+    //   });
+
+    //   const char = title.querySelectorAll(".c-char");
+    //   gsap.set(char, {
+    //     yPercent: 100,
+    //     opacity: 0,
+    //   });
+
+    //   gsap.to(char, {
+    //     scrollTrigger: {
+    //       trigger: cta,
+    //       start: "top 40%",
+    //       end: "bottom top",
+    //       // markers: true,
+    //       onEnter: () => {
+    //         gsap.to(char, {
+    //           yPercent: 0,
+    //           opacity: 1,
+    //           ease: "power2.out",
+    //           duration: 0.4,
+    //           stagger: 0.05,
+    //         });
+    //       },
+    //     },
+    //   });
+    // });
 
     gsap.set(ctaMask, {
       rotate: 0,
@@ -286,6 +308,7 @@ const mainScript = () => {
   if (window.location.pathname === "/info") {
     runLenis();
 
+    // archive section
     const infoArchive = document.querySelector(".p-info-archive");
     const infoArchiveTitle = document.querySelector(".p-info-archive__title");
     gsap.set(infoArchiveTitle, {
@@ -303,7 +326,8 @@ const mainScript = () => {
       },
     });
 
-    const cta = document.querySelector(".js-cta");
+    // CTA section
+    const cta = document.querySelector(".c-cta");
     const ctaImage = document.querySelector(".js-cta-image");
     gsap.set(ctaImage, {
       backgroundPosition: "center 20%",
@@ -318,6 +342,44 @@ const mainScript = () => {
         scrub: true,
       },
     });
+
+    // const sectionTitle = document.querySelectorAll(".js-section-title");
+    // sectionTitle.forEach((title) => {
+    //   const letter = title.textContent.trim().split("");
+    //   title.textContent = "";
+    //   letter.forEach((char) => {
+    //     const span = document.createElement("span");
+    //     if (char === " ") {
+    //       span.innerHTML = "&nbsp;";
+    //     } else {
+    //       span.textContent = char;
+    //     }
+    //     span.classList.add("c-char");
+    //     title.append(span);
+    //     const char = title.querySelectorAll(".c-char");
+    //     gsap.set(char, {
+    //       yPercent: 100,
+    //       opacity: 0,
+    //     });
+    //     gsap.to(char, {
+    //       scrollTrigger: {
+    //         trigger: cta,
+    //         start: "top 40%",
+    //         end: "bottom top",
+    //         markers: true,
+    //         onEnter: () => {
+    //           gsap.to(char, {
+    //             yPercent: 0,
+    //             opacity: 1,
+    //             ease: "power3.out",
+    //             duration: 0.4,
+    //             stagger: 0.05,
+    //           });
+    //         },
+    //       },
+    //     });
+    //   });
+    // });
   }
 
   //menu button and nav
@@ -475,6 +537,44 @@ const mainScript = () => {
 
   lg.addEventListener("change", () => {
     footerHover(lg.matches);
+  });
+
+  const sectionTitle = document.querySelectorAll(".js-section-title");
+  sectionTitle.forEach((title) => {
+    const letter = title.textContent.trim().split("");
+    title.textContent = "";
+    letter.forEach((char) => {
+      const span = document.createElement("span");
+      if (char === " ") {
+        span.innerHTML = "&nbsp;";
+      } else {
+        span.textContent = char;
+      }
+      span.classList.add("c-char");
+      title.append(span);
+    });
+    const char = title.querySelectorAll(".c-char");
+    gsap.set(char, {
+      yPercent: 100,
+      opacity: 0,
+    });
+    gsap.to(char, {
+      scrollTrigger: {
+        trigger: title,
+        start: "top 80%",
+        end: "bottom top",
+        // markers: true,
+        onEnter: () => {
+          gsap.to(char, {
+            yPercent: 0,
+            opacity: 1,
+            ease: "power3.out",
+            duration: 0.4,
+            stagger: 0.05,
+          });
+        },
+      },
+    });
   });
 };
 
