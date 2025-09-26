@@ -9,7 +9,7 @@ const mainScript = () => {
   const runLenis = () => {
     const lenis = new Lenis({
       autoRaf: true,
-      duration: 1.2,
+      duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
@@ -18,204 +18,244 @@ const mainScript = () => {
   const footer = document.querySelector(".footer");
 
   if (window.location.pathname === "/") {
-    const html = document.querySelector("html");
-    const body = document.querySelector("body");
-    const main = document.querySelector(".main");
-    const loading = document.querySelector(".js-loading");
-    const kvTagText = document.querySelectorAll(".p-top-kv__tag-line");
-    // gsap.set([html], {
-    //   overflow: "hidden",
-    //   height: "100%",
+    runLenis();
+    // const html = document.querySelector("html");
+    // const body = document.querySelector("body");
+    // const main = document.querySelector(".main");
+    // const loading = document.querySelector(".js-loading");
+    // const kvTagText = document.querySelectorAll(".p-top-kv__tag-line");
+    // // gsap.set([html], {
+    // //   overflow: "hidden",
+    // //   height: "100%",
+    // // });
+    // gsap.set(loading, {
+    //   display: "block",
+    //   opacity: 1,
+    //   pointerEvents: "auto",
     // });
-    gsap.set(loading, {
-      display: "block",
-      opacity: 1,
-      pointerEvents: "auto",
-    });
-    // gsap.set(main, {
-    //   pointerEvents: "none",
+    // // gsap.set(main, {
+    // //   pointerEvents: "none",
+    // // });
+    // gsap.set(kvTagText, {
+    //   yPercent: 100,
     // });
-    gsap.set(kvTagText, {
-      yPercent: 100,
-    });
 
-    const digitWrappers = document.querySelectorAll(".js-digit");
-    const digitHeight = digitWrappers[0].getBoundingClientRect().height;
-    const loadingText = document.querySelectorAll(".loading__text");
-    digitWrappers.forEach((item) => {
-      item.style.height = digitHeight + "px";
-    });
+    // const digitWrappers = document.querySelectorAll(".js-digit");
+    // const digitHeight = digitWrappers[0].getBoundingClientRect().height;
+    // const loadingText = document.querySelectorAll(".loading__text");
+    // digitWrappers.forEach((item) => {
+    //   item.style.height = digitHeight + "px";
+    // });
 
-    digitWrappers.forEach((wrapper) => {
-      for (let i = 1; i <= 9; i++) {
-        const span = document.createElement("span");
-        span.classList.add("digit");
-        span.classList.add("loading__text");
-        span.textContent = i;
-        wrapper.appendChild(span);
-      }
+    // digitWrappers.forEach((wrapper) => {
+    //   for (let i = 1; i <= 9; i++) {
+    //     const span = document.createElement("span");
+    //     span.classList.add("digit");
+    //     span.classList.add("loading__text");
+    //     span.textContent = i;
+    //     wrapper.appendChild(span);
+    //   }
 
-      digitWrappers[1].querySelectorAll(".digit").forEach((digit) => {
-        digit.classList.add("digit-one");
-      });
+    //   digitWrappers[1].querySelectorAll(".digit").forEach((digit) => {
+    //     digit.classList.add("digit-one");
+    //   });
 
-      digitWrappers[0].querySelectorAll(".digit").forEach((digit) => {
-        digit.classList.add("digit-ten");
-      });
-    });
+    //   digitWrappers[0].querySelectorAll(".digit").forEach((digit) => {
+    //     digit.classList.add("digit-ten");
+    //   });
+    // });
 
-    const digits = document.querySelectorAll(".digit");
-    const digitone = document.querySelectorAll(".digit-one");
-    const digitten = document.querySelectorAll(".digit-ten");
-    const digithundred = document.querySelector(".digit-hundred");
+    // const digits = document.querySelectorAll(".digit");
+    // const digitone = document.querySelectorAll(".digit-one");
+    // const digitten = document.querySelectorAll(".digit-ten");
+    // const digithundred = document.querySelector(".digit-hundred");
 
-    const openingAnimation = () => {
-      const timeline = gsap.timeline();
-      const digitoneFirst = Math.floor(Math.random() * 9) + 1;
-      const digittenFirst = Math.floor(Math.random() * 8) + 1;
-      const spinDuration = 1.5;
-      const easing = "power1.out";
+    // const openingAnimation = () => {
+    //   const timeline = gsap.timeline();
+    //   const digitoneFirst = Math.floor(Math.random() * 9) + 1;
+    //   const digittenFirst = Math.floor(Math.random() * 8) + 1;
+    //   const spinDuration = 1.5;
+    //   const easing = "power1.out";
 
-      gsap.set(digithundred, {
-        yPercent: 100,
-        display: "block",
-      });
+    //   gsap.set(digithundred, {
+    //     yPercent: 100,
+    //     display: "block",
+    //   });
 
-      timeline.to(
-        digitone,
-        {
-          y: -digitHeight * digitoneFirst,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "start"
-      );
+    //   timeline.to(
+    //     digitone,
+    //     {
+    //       y: -digitHeight * digitoneFirst,
+    //       duration: spinDuration,
+    //       ease: easing,
+    //     },
+    //     "start"
+    //   );
 
-      timeline.to(
-        digitten,
-        {
-          y: -digitHeight * digittenFirst,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "start"
-      );
+    //   timeline.to(
+    //     digitten,
+    //     {
+    //       y: -digitHeight * digittenFirst,
+    //       duration: spinDuration,
+    //       ease: easing,
+    //     },
+    //     "start"
+    //   );
 
-      const digitoneSecond = Math.floor(Math.random() * 9) + 1;
-      let digittenSecond =
-        Math.floor(Math.random() * (9 - digittenFirst)) + digittenFirst + 1;
-      if (digittenSecond > 9) digittenSecond === 9;
+    //   const digitoneSecond = Math.floor(Math.random() * 9) + 1;
+    //   let digittenSecond =
+    //     Math.floor(Math.random() * (9 - digittenFirst)) + digittenFirst + 1;
+    //   if (digittenSecond > 9) digittenSecond === 9;
 
-      timeline.to(
-        digitone,
-        {
-          y: -digitHeight * digitoneSecond,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "second"
-      );
+    //   timeline.to(
+    //     digitone,
+    //     {
+    //       y: -digitHeight * digitoneSecond,
+    //       duration: spinDuration,
+    //       ease: easing,
+    //     },
+    //     "second"
+    //   );
 
-      timeline.to(
-        digitten,
-        {
-          y: -digitHeight * digittenSecond,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "second"
-      );
+    //   timeline.to(
+    //     digitten,
+    //     {
+    //       y: -digitHeight * digittenSecond,
+    //       duration: spinDuration,
+    //       ease: easing,
+    //     },
+    //     "second"
+    //   );
 
-      timeline.to(
-        digits,
-        {
-          y: 0,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "final"
-      );
+    //   timeline.to(
+    //     digits,
+    //     {
+    //       y: 0,
+    //       duration: spinDuration,
+    //       ease: easing,
+    //     },
+    //     "final"
+    //   );
 
-      timeline.to(
-        digithundred,
-        {
-          yPercent: 0,
-          duration: spinDuration,
-          ease: easing,
-        },
-        "final"
-      );
+    //   timeline.to(
+    //     digithundred,
+    //     {
+    //       yPercent: 0,
+    //       duration: spinDuration,
+    //       ease: easing,
+    //     },
+    //     "final"
+    //   );
 
-      timeline.to(loadingText, {
-        clipPath: "inset(0% 0% 100% 0%)",
-        duration: 1.5,
-        ease: "power2.out",
-      });
+    //   timeline.to(loadingText, {
+    //     clipPath: "inset(0% 0% 100% 0%)",
+    //     duration: 1.5,
+    //     ease: "power2.out",
+    //   });
 
-      timeline.to(
-        loading,
-        {
-          opacity: 0,
-          pointerEvents: "none",
-          duration: 2,
-          ease: "sine.in",
-          onComplete: () => {
-            gsap.set(loading, {
-              display: "none",
-              opacity: 0,
-              pointerEvents: "none",
-            });
-          },
-        },
-        "view"
-      );
+    //   timeline.to(
+    //     loading,
+    //     {
+    //       opacity: 0,
+    //       pointerEvents: "none",
+    //       duration: 2,
+    //       ease: "sine.in",
+    //       onComplete: () => {
+    //         gsap.set(loading, {
+    //           display: "none",
+    //           opacity: 0,
+    //           pointerEvents: "none",
+    //         });
+    //       },
+    //     },
+    //     "view"
+    //   );
 
-      timeline.to(
-        main,
-        {
-          pointerEvents: "auto",
-          duration: 1,
-          ease: "sine.in",
-        },
-        "view"
-      );
+    //   timeline.to(
+    //     main,
+    //     {
+    //       pointerEvents: "auto",
+    //       duration: 1,
+    //       ease: "sine.in",
+    //     },
+    //     "view"
+    //   );
 
-      timeline.to(
-        kvTagText,
-        {
-          yPercent: 0,
-          duration: 1.5,
-          ease: "power2.out",
-          onComplete: () => {
-            gsap.set([html], {
-              overflow: "auto",
-              height: "auto",
-            });
-            gsap.set(main, {
-              pointerEvents: "auto",
-            });
-            runLenis();
-          },
-        },
-        "+=0.5"
-      );
-    };
+    //   timeline.to(
+    //     kvTagText,
+    //     {
+    //       yPercent: 0,
+    //       duration: 1.5,
+    //       ease: "power2.out",
+    //       onComplete: () => {
+    //         gsap.set([html], {
+    //           overflow: "auto",
+    //           height: "auto",
+    //         });
+    //         gsap.set(main, {
+    //           pointerEvents: "auto",
+    //         });
+    //         runLenis();
+    //       },
+    //     },
+    //     "+=0.5"
+    //   );
+    // };
 
-    openingAnimation();
+    // openingAnimation();
 
     const cta = document.querySelector(".c-cta");
     const ctaMask = document.querySelector(".js-cta-mask");
+    const sectionTitle = document.querySelectorAll(".js-section-title");
+    sectionTitle.forEach((title) => {
+      const letter = title.textContent.trim().split("");
+      title.textContent = "";
+      letter.forEach((char) => {
+        const span = document.createElement("span");
+        if (char === " ") {
+          span.innerHTML = "&nbsp;";
+        } else {
+          span.textContent = char;
+        }
+        span.classList.add("c-char");
+        title.append(span);
+      });
+    });
+    const char = document.querySelectorAll(".c-char");
+    gsap.set(char, {
+      yPercent: 100,
+      opacity: 0,
+    });
+
+    gsap.to(char, {
+      scrollTrigger: {
+        trigger: cta,
+        start: "top 40%",
+        end: "bottom top",
+        markers: true,
+        onEnter: () => {
+          gsap.to(char, {
+            yPercent: 0,
+            opacity: 1,
+            ease: "power2.out",
+            duration: 0.5,
+            stagger: 0.05,
+          });
+        },
+      },
+    });
+
     gsap.set(ctaMask, {
       rotate: 0,
       opacity: 1,
       yPercent: 0,
     });
-    gsap.to(ctaMask, {
-      rotate: 3,
+    let swingtween = gsap.to(ctaMask, {
+      rotate: 5,
       opacity: 1,
       yPercent: 0,
       duration: 1.5,
-      ease: "sine.inOut",
+      ease: "rough({ strength: 1, taper: false, template: none.out, clamp: false, randomize: true })",
       repeat: -1,
       yoyo: true,
     });
@@ -224,7 +264,6 @@ const mainScript = () => {
         trigger: cta,
         start: "top+=100",
         end: "bottom top",
-        markers: true,
         onEnter: () => {
           gsap.to(ctaMask, {
             yPercent: 100,
@@ -234,7 +273,9 @@ const mainScript = () => {
             onComplete: () => {
               gsap.set(ctaMask, {
                 display: "none",
+                rotate: 0,
               });
+              swingtween.kill();
             },
           });
         },
@@ -333,31 +374,37 @@ const mainScript = () => {
   });
 
   // location time
-  let currentTime;
+  let offset;
+
   async function getLocationTime() {
     const response = await fetch(
       "https://worldtimeapi.org/api/timezone/Asia/Tokyo"
     );
     const data = await response.json();
-    currentTime = new Date(data.datetime);
+    // 東京時刻と現在の差を保存
+    offset = new Date(data.datetime).getTime() - Date.now();
+    localStorage.setItem("tokyoOffset", offset);
   }
 
   async function init() {
-    await getLocationTime(); // ここで取得完了を待つ
-    updateDisplay(); // ここで初回表示
-    setInterval(() => {
-      currentTime.setMinutes(currentTime.getMinutes() + 1);
-      updateDisplay();
-    }, 60000);
+    const saved = localStorage.getItem("tokyoOffset");
+    if (saved) {
+      offset = parseInt(saved, 10);
+    } else {
+      await getLocationTime();
+    }
+
+    updateDisplay(); // 初回表示
+    setInterval(updateDisplay, 1000); // 毎秒更新でOK
   }
 
-  const updateDisplay = () => {
-    const hour = currentTime.getHours();
-    const minute = currentTime.getMinutes().toString().padStart(2, "0");
+  function updateDisplay() {
+    const now = new Date(Date.now() + offset); // 現在時刻 + 差
+    const hour = now.getHours();
+    const minute = now.getMinutes().toString().padStart(2, "0");
     const ampm = hour >= 12 ? "PM" : "AM";
 
-    const localTime = document.querySelectorAll(".js-location-time");
-    localTime.forEach((time, index) => {
+    document.querySelectorAll(".js-location-time").forEach((time) => {
       const localHour = time.querySelector(".js-time-hour");
       const localMinute = time.querySelector(".js-time-minute");
       const localAmpm = time.querySelector(".js-time-ampm");
@@ -365,7 +412,7 @@ const mainScript = () => {
       localMinute.textContent = minute;
       localAmpm.textContent = ampm;
     });
-  };
+  }
 
   init();
 

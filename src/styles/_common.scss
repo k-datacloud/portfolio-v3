@@ -235,7 +235,7 @@ body {
   font-weight: 500;
   @include font-satoshi;
   color: #d1d1c7;
-  text-transform: capitalize;
+  // text-transform: capitalize;
 
   &--black {
     color: #080807;
@@ -269,6 +269,10 @@ body {
   &--sm {
     font-size: clamp(0.75rem, 0.706rem + 0.1878vw, 0.875rem);
   }
+}
+
+.c-char {
+  display: inline-block;
 }
 
 .c-nameplate {
