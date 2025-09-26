@@ -129,7 +129,7 @@
       top: 50%;
       left: 0;
       font-size: clamp(6.25rem, 4.25rem + 3.125vw, 9.25rem);
-      color: rgba($color: #141414, $alpha: 0.6);
+      color: rgba($color: #141414, $alpha: 1);
       line-height: 1;
       @include font-satoshi();
       font-weight: 500;
