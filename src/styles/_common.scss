@@ -407,7 +407,7 @@ body {
     }
 
     &--bg {
-      background-image: url("/img/p-info-cta-sp.jpg");
+      background-image: url("/img/p-info-cta.jpg");
       background-repeat: no-repeat;
       // background-position: center 20%;
       aspect-ratio: 3 / 2;
@@ -600,6 +600,10 @@ body {
   &__title {
     margin-bottom: 1rem;
   }
+
+  // &__lead {
+  //   max-width: 380px;
+  // }
 
   .footer-bottom {
     display: flex;

@@ -204,6 +204,27 @@ const mainScript = () => {
 
     // openingAnimation();
 
+    // intro section
+    const introDesc = document.querySelector(".p-top-intro__desc");
+    const textLine = document.querySelectorAll(".js-split-line");
+    gsap.set(textLine, {
+      yPercent: 100,
+      opacity: 0,
+    });
+    gsap.to(textLine, {
+      yPercent: 0,
+      opacity: 1,
+      duration: 0.7,
+      ease: "power2.out",
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: introDesc,
+        start: "top 80%",
+        end: "bottom top",
+        // markers: true,
+      },
+    });
+
     // Works section
     const onProject = document.querySelectorAll(".js-on-project");
     onProject.forEach((project) => {
@@ -221,6 +242,36 @@ const mainScript = () => {
         },
       });
     });
+
+    // const projects = document.querySelectorAll(".js-project");
+    // const cursor = document.querySelector(".cursor");
+    // const cursorText = document.querySelector(".cursor__text");
+
+    // let mouseX = 0;
+    // let mouseY = 0;
+    // let currentX = 0;
+    // let currentY = 0;
+
+    // projects.forEach((project) => {
+    //   if (project.classList.contains("js-on-project")) {
+    //     cursorText.textContent = "View";
+    //   } else {
+    //     cursorText.textContent = "Hold On";
+    //   }
+    //   project.addEventListener("mousemove", (e) => {
+    //     mouseX = e.clientX;
+    //     mouseY = e.clientY;
+    //   });
+    // });
+
+    // const animateCursor = () => {
+    //   currentX += (mouseX - currentX) / 10;
+    //   currentY += (mouseY - currentY) / 10;
+    //   cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
+    //   requestAnimationFrame(animateCursor);
+    // };
+
+    // animateCursor();
 
     // Cta section
     const cta = document.querySelector(".c-cta");

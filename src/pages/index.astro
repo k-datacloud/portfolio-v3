@@ -14,6 +14,10 @@ import Cta from "../components/Cta.astro";
     <Loading />
   </Fragment> -->
 
+  <div class="cursor">
+    <span class="cursor__text c-text"></span>
+  </div>
+
   <section class="p-top-kv">
     <div class="l-wrapper p-top-kv__wrapper">
       <div class="p-top-kv__head">
@@ -76,14 +80,26 @@ import Cta from "../components/Cta.astro";
           </div>
           <div class="p-top-intro__desc">
             <p class="c-text">
-              My name is Kaisei Sadatoki. I mainly work on the front end —
-              writing code and creating designs.
+              <span class="text-wrapper js-split-line">
+                My name is Kaisei Sadatoki. I mainly work on the
+              </span>
+              <span class="text-wrapper js-split-line">
+                front end — writing code and creating designs.
+              </span>
             </p>
             <p class="c-text">
-              I’m drawn to interactive and modern designs — the kind with
-              striking motion and animation. I also enjoy design beyond the web:
-              typography-driven layouts, minimal aesthetics, and clean
-              structure.
+              <span class="text-wrapper js-split-line">
+                I’m drawn to interactive and modern designs —
+              </span>
+              <span class="text-wrapper js-split-line">
+                the kind with striking motion and animation. I also
+              </span>
+              <span class="text-wrapper js-split-line">
+                enjoy design beyond the web: typography-driven
+              </span>
+              <span class="text-wrapper js-split-line">
+                layouts, minimal aesthetics, and clean structure.
+              </span>
             </p>
           </div>
         </div>
@@ -126,7 +142,16 @@ import Cta from "../components/Cta.astro";
             <a
               class="project-card__project js-on-project"
               href="/"
-              target="_blank"></a>
+              target="_blank"
+            >
+              <video
+                class="l-film"
+                loop="loop"
+                autoplay="autoplay"
+                muted="muted"
+                playsinline="playsinline"
+                src="/img/project01.mp4"></video>
+            </a>
           </div>
           <div class="project-card__side">
             <p class="project-card__project-name c-heading">
@@ -140,7 +165,9 @@ import Cta from "../components/Cta.astro";
               <span class="project-card__number">02</span>
               <span class="project-card__desc">stay tuned</span>
             </div>
-            <div class="project-card__project project-card__project--coming">
+            <div
+              class="project-card__project project-card__project--coming js-project"
+            >
               <img src="/img/plus-icon.svg" alt="" />
             </div>
           </div>
