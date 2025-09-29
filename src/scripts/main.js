@@ -218,10 +218,9 @@ const mainScript = () => {
       ease: "power2.out",
       stagger: 0.1,
       scrollTrigger: {
-        trigger: introDesc,
+        trigger: textLine[0],
         start: "top 80%",
         end: "bottom top",
-        // markers: true,
       },
     });
 
@@ -235,10 +234,9 @@ const mainScript = () => {
         clipPath: "inset(0 0% 0 0)",
         scrollTrigger: {
           trigger: project,
-          start: "top 95%",
-          end: "top 10%",
+          start: "top 105%",
+          end: "top 40%",
           scrub: true,
-          markers: true,
         },
       });
     });
@@ -329,10 +327,11 @@ const mainScript = () => {
       yPercent: -10,
       // ease: "power2.out",
       scrollTrigger: {
-        trigger: infoArchive,
-        start: "top 80%",
+        trigger: infoArchiveTitle,
+        start: "top 105%",
         end: "bottom 10%",
         scrub: true,
+        markers: true,
       },
     });
 
@@ -355,10 +354,16 @@ const mainScript = () => {
   }
 
   //menu button and nav
-  const menuToggle = document.querySelector(".js-menu-toggle");
+  const menuToggle = document.querySelector(".js-menu-open");
+  const menuClose = document.querySelector(".js-menu-close");
+  const navMenu = document.querySelector(".js-nav-menu");
   gsap.set(menuToggle, {
     pointerEvents: "none",
     opacity: 0,
+  });
+  gsap.set(navMenu, {
+    pointerEvents: "none",
+    clipPath: "inset(0 0 100% 0)",
   });
 
   gsap.to(menuToggle, {
@@ -388,7 +393,6 @@ const mainScript = () => {
   ScrollTrigger.create({
     trigger: footer,
     start: "top 20%",
-    markers: true,
     onEnter: () => {
       gsap.to(menuToggle, {
         pointerEvents: "none",
@@ -405,6 +409,36 @@ const mainScript = () => {
         ease: "power2.out",
       });
     },
+  });
+
+  menuToggle.addEventListener("click", () => {
+    // gsap.to(menuToggle, {
+    //   pointerEvents: "none",
+    //   opacity: 0,
+    //   duration: 1,
+    //   ease: "power2.out",
+    // });
+    gsap.to(navMenu, {
+      pointerEvents: "auto",
+      clipPath: "inset(0 0 0% 0)",
+      duration: 0.7,
+      ease: "power3.in",
+    });
+  });
+
+  menuClose.addEventListener("click", () => {
+    gsap.to(navMenu, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power2.out",
+      onComplete: () => {
+        gsap.set(navMenu, {
+          pointerEvents: "none",
+          clipPath: "inset(0 0 100% 0)",
+          clearProps: "opacity",
+        });
+      },
+    });
   });
 
   // location time
@@ -451,28 +485,42 @@ const mainScript = () => {
   init();
 
   // title animation
-  const sectionTitle = document.querySelectorAll(".js-section-title");
-  sectionTitle.forEach((title) => {
-    const letter = title.textContent.trim().split("");
-    title.textContent = "";
-    letter.forEach((char) => {
-      const span = document.createElement("span");
-      if (char === " ") {
-        span.innerHTML = "&nbsp;";
-      } else {
-        span.textContent = char;
+  const sectionTitle = document.querySelectorAll(".js-split-text");
+  sectionTitle.forEach((el) => {
+    const nodes = Array.from(el.childNodes);
+    const frag = document.createDocumentFragment();
+
+    nodes.forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        node.textContent.split("").forEach((char) => {
+          const span = document.createElement("span");
+          span.classList.add("c-char");
+          if (char === " ") {
+            span.innerHTML = "&nbsp;";
+          } else {
+            span.textContent = char;
+          }
+          frag.appendChild(span);
+        });
+      } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "BR") {
+        const isHidden = window.getComputedStyle(node).display === "none";
+        console.log(isHidden);
+
+        if (!isHidden) {
+          frag.appendChild(document.createElement("br"));
+        }
       }
-      span.classList.add("c-char");
-      title.append(span);
     });
-    const char = title.querySelectorAll(".c-char");
+    el.innerHTML = "";
+    el.appendChild(frag);
+    const char = el.querySelectorAll(".c-char");
     gsap.set(char, {
       yPercent: 100,
       opacity: 0,
     });
     gsap.to(char, {
       scrollTrigger: {
-        trigger: title,
+        trigger: el,
         start: "top 80%",
         end: "bottom top",
         // markers: true,
@@ -480,7 +528,7 @@ const mainScript = () => {
           gsap.to(char, {
             yPercent: 0,
             opacity: 1,
-            ease: "power3.out",
+            ease: "power2.out",
             duration: 0.4,
             stagger: 0.05,
           });

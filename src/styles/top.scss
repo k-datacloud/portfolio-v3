@@ -136,6 +136,7 @@
     margin-bottom: calc(120 / 16 * 1rem);
     @include respond-to("lg") {
       grid-column: 5 / 9;
+      max-width: none;
       margin-bottom: 0;
     }
 
@@ -195,13 +196,13 @@
     flex-direction: column;
     gap: 24px;
 
-    .text-wrapper {
-      display: block;
-    }
+    // .text-wrapper {
+    //   display: block;
+    // }
 
-    .c-text {
-      font-size: clamp(0.875rem, 0.8143rem + 0.2589vw, 1.125rem);
-    }
+    // .c-text {
+    //   font-size: clamp(0.875rem, 0.8143rem + 0.2589vw, 1.125rem);
+    // }
   }
 }
 
@@ -268,6 +269,8 @@
     &__content {
       grid-column: 1 / 2;
       aspect-ratio: 1 / 1;
+      min-width: 0;
+
       @include respond-to("lg") {
         grid-column: 7 / 11;
         grid-row: 1;
@@ -299,6 +302,13 @@
       margin-bottom: calc(8 / 16 * 1rem);
       @include respond-to("lg") {
         margin-bottom: calc(16 / 16 * 1rem);
+      }
+
+      .c-text {
+        font-size: clamp(0.75rem, 0.662rem + 0.3756vw, 1rem);
+        @include font-satoshi;
+        font-weight: 500;
+        text-transform: uppercase;
       }
     }
 
