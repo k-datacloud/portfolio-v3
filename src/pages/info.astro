@@ -37,7 +37,9 @@ import Cta from "../components/Cta.astro";
           <h2 class="c-heading p-info-kv__title">in/fo</h2>
         </div>
         <div class="p-info-kv__badge">
-          <span class="c-text scrolldown__text">Scroll Down</span>
+          <div class="c-badge">
+            <span class="c-badge__text">scroll down</span>
+          </div>
         </div>
       </div>
     </div>
@@ -55,15 +57,27 @@ import Cta from "../components/Cta.astro";
       </div>
       <div class="p-info-profile__description">
         <p class="c-text">
-          I’m 22 years old and from Japan. Currently, I’m based in Hyogo. I
-          enjoy it most when an idea starts to take shape — whether it’s
-          bringing a design into code or watching an animation finally flow as I
-          imagined.
+          <span class="text-wrapper js-split-line"
+            >I’m 22 years old and from Japan. Currently, I’m based in Hyogo.</span
+          >
+          <span class="text-wrapper js-split-line"
+            >I enjoy it most when an idea starts to take shape — whether it’s</span
+          >
+          <span class="text-wrapper js-split-line"
+            >bringing a design into code or watching an animation finally</span
+          >
+          <span class="text-wrapper js-split-line">flow as I imagined.</span>
         </p>
         <p class="c-text">
-          When I’m not working, I like being by myself — it helps me feel at
-          ease. Through my work, I’d love to collaborate with people from
-          different places. Working beyond Japan sounds exciting.
+          <span class="text-wrapper js-split-line"
+            >When I’m not working, I like being by myself — it helps me feel</span
+          >
+          <span class="text-wrapper js-split-line"
+            >at ease. Through my work, I’d love to collaborate with people</span
+          >
+          <span class="text-wrapper js-split-line"
+            >from different places. Working beyond Japan sounds exciting.</span
+          >
         </p>
       </div>
     </div>
@@ -140,7 +154,7 @@ import Cta from "../components/Cta.astro";
   <Cta
     buttonText="Say hello"
     buttonLink="mailto:k25ts09@outlook.jp"
-    title="Let's Collaborate"
+    title="Let's<br class='br-sp' />Collaborate"
     leadTop="(anything i can help with?)"
     leadBottom={`don't be shy —<br class='br-sp' />I'd love to hear from you.`}
     description={`I'm looking forward to new connections,<br />new ideas, and building something together.`}

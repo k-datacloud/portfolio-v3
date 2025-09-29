@@ -295,6 +295,22 @@ body {
   }
 }
 
+.c-badge {
+  &__text {
+    font-size: clamp(0.625rem, 0.581rem + 0.1878vw, 0.75rem);
+    text-transform: capitalize;
+    background-color: #eaeaea;
+    padding: 8px 32px;
+    border-radius: 20px;
+    color: #080807;
+    font-size: 12px;
+
+    @include respond-to("lg") {
+      padding: 8px 42px;
+    }
+  }
+}
+
 //menu button & nav menu
 .c-menu-toggle {
   position: fixed;
@@ -341,6 +357,7 @@ body {
 .nav-menu {
   position: fixed;
   z-index: 9999;
+  clip-path: inset(0 0 100% 0);
   top: 0;
   right: 0;
   width: 100%;

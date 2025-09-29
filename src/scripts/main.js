@@ -206,23 +206,6 @@ const mainScript = () => {
 
     // intro section
     const introDesc = document.querySelector(".p-top-intro__desc");
-    const textLine = document.querySelectorAll(".js-split-line");
-    gsap.set(textLine, {
-      yPercent: 100,
-      opacity: 0,
-    });
-    gsap.to(textLine, {
-      yPercent: 0,
-      opacity: 1,
-      duration: 0.7,
-      ease: "power2.out",
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: textLine[0],
-        start: "top 80%",
-        end: "bottom top",
-      },
-    });
 
     // Works section
     const onProject = document.querySelectorAll(".js-on-project");
@@ -508,6 +491,10 @@ const mainScript = () => {
 
         if (!isHidden) {
           frag.appendChild(document.createElement("br"));
+        } else {
+          const span = document.createElement("span");
+          span.innerHTML = "&nbsp;";
+          frag.appendChild(span);
         }
       }
     });
@@ -535,6 +522,24 @@ const mainScript = () => {
         },
       },
     });
+  });
+
+  const textLine = document.querySelectorAll(".js-split-line");
+  gsap.set(textLine, {
+    yPercent: 100,
+    opacity: 0,
+  });
+  gsap.to(textLine, {
+    yPercent: 0,
+    opacity: 1,
+    duration: 0.7,
+    ease: "power2.out",
+    stagger: 0.1,
+    scrollTrigger: {
+      trigger: textLine[0],
+      start: "top 85%",
+      end: "bottom top",
+    },
   });
 
   //footer

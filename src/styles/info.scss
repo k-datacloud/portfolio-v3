@@ -89,7 +89,7 @@
     margin-bottom: calc(32 / 16 * 1rem);
 
     .l-image {
-      width: 96px;
+      width: 88px;
 
       @include respond-to("lg") {
         width: 110px;
@@ -109,6 +109,10 @@
 
     @include respond-to("lg") {
       max-width: 480px;
+    }
+
+    .text-wrapper {
+      line-height: 1.3;
     }
   }
 
