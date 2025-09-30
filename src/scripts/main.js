@@ -1,9 +1,11 @@
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 const mainScript = () => {
   gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollToPlugin);
 
   //Lenis smooth scrolling
   const runLenis = () => {
@@ -524,6 +526,50 @@ const mainScript = () => {
     });
   });
 
+  // bodyText animation
+  const bodyText = document.querySelectorAll(".js-split-text-body");
+  bodyText.forEach((el) => {
+    const text = el.textContent
+      .replace(/\n/g, "") // 改行だけ削除
+      .replace(/\t/g, "") // タブも削除
+      .trim(); // 前後の空白は削除
+    const words = text.split(" ");
+    console.log(words);
+
+    el.textContent = "";
+    words.forEach((word, index) => {
+      if (word === "") {
+        return;
+      }
+      const span = document.createElement("span");
+      span.classList.add("c-char-body");
+      span.textContent = word;
+      el.appendChild(span);
+
+      if (index < words.length - 1) {
+        el.appendChild(document.createTextNode(" "));
+      }
+    });
+    const char = el.querySelectorAll(".c-char-body");
+    gsap.set(char, {
+      yPercent: 100,
+      opacity: 0,
+    });
+    gsap.to(char, {
+      yPercent: 0,
+      opacity: 1,
+      ease: "power2.out",
+      duration: 0.5,
+      stagger: 0.02,
+      scrollTrigger: {
+        trigger: el,
+        start: "top 80%",
+        end: "bottom top",
+        // markers: true,
+      },
+    });
+  });
+
   const textLine = document.querySelectorAll(".js-split-line");
   gsap.set(textLine, {
     yPercent: 100,
@@ -602,6 +648,47 @@ const mainScript = () => {
   lg.addEventListener("change", () => {
     footerHover(lg.matches);
   });
+
+  document.querySelectorAll(".js-scroll-link").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      if (!href || !href.startsWith("#")) return;
+
+      e.preventDefault();
+      const isTop = window.location.pathname === "/";
+
+      if (isTop) {
+        const target = document.querySelector(href);
+        if (!target) return;
+        gsap.to(window, {
+          scrollTo: target,
+          duration: 2,
+          ease: "power2.out",
+        });
+      } else {
+        window.location.href = "/" + href;
+      }
+    });
+  });
+
+  // window.addEventListener("load", () => {
+  //   if (location.hash) {
+  //     const target = document.querySelector(location.hash);
+  //     if (!target) return;
+  //     window.scrollTo(0, 0);
+  //     gsap.to(window, {
+  //       scrollTo: target,
+  //       duration: 2,
+  //       ease: "power2.out",
+  //     });
+  //   }
+  // });
+
+  // gsap.to(window, {
+  //   duration: 3,
+  //   scrollTo: 1000,
+  //   ease: "power2.out",
+  // });
 };
 
 export default mainScript;
