@@ -8,6 +8,7 @@ const {
   description,
   asImage,
   image,
+  alt,
   icon,
 } = Astro.props;
 ---
@@ -39,7 +40,7 @@ const {
           ? "l-image c-cta__image"
           : "l-image c-cta__image c-cta__image--bg js-cta-image"}
       >
-        <img src={image} alt="" />
+        <img src={image} alt={alt} />
         {
           asImage ? (
             <span class="c-cta-mask js-cta-mask swing">

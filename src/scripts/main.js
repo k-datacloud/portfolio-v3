@@ -310,13 +310,11 @@ const mainScript = () => {
 
     gsap.to(infoArchiveTitle, {
       yPercent: -10,
-      // ease: "power2.out",
       scrollTrigger: {
         trigger: infoArchiveTitle,
         start: "top 105%",
         end: "bottom 10%",
         scrub: true,
-        markers: true,
       },
     });
 
@@ -565,7 +563,6 @@ const mainScript = () => {
         trigger: el,
         start: "top 80%",
         end: "bottom top",
-        // markers: true,
       },
     });
   });
@@ -670,25 +667,6 @@ const mainScript = () => {
       }
     });
   });
-
-  // window.addEventListener("load", () => {
-  //   if (location.hash) {
-  //     const target = document.querySelector(location.hash);
-  //     if (!target) return;
-  //     window.scrollTo(0, 0);
-  //     gsap.to(window, {
-  //       scrollTo: target,
-  //       duration: 2,
-  //       ease: "power2.out",
-  //     });
-  //   }
-  // });
-
-  // gsap.to(window, {
-  //   duration: 3,
-  //   scrollTo: 1000,
-  //   ease: "power2.out",
-  // });
 };
 
 export default mainScript;
