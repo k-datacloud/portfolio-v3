@@ -300,14 +300,22 @@ body {
 }
 
 .c-badge {
+  position: absolute;
+  right: clamp(20px, calc(6.957px + 3.478vw), 96px);
+  bottom: -48px;
+
+  @include respond-to("lg") {
+    position: static;
+  }
   &__text {
     font-size: clamp(0.625rem, 0.581rem + 0.1878vw, 0.75rem);
     text-transform: capitalize;
     background-color: #eaeaea;
-    padding: 8px 32px;
+    padding: 8px 42px;
     border-radius: 20px;
     color: #080807;
     font-size: 12px;
+    line-height: 1;
 
     @include respond-to("lg") {
       padding: 8px 42px;
@@ -460,7 +468,127 @@ body {
   }
 }
 
-//cta
+//Fv
+
+.c-fv {
+  width: 100%;
+  height: 100svh;
+
+  &__wrapper {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: calc(72 / 16 * 1rem);
+
+    @include respond-to("lg") {
+      margin-bottom: calc(96 / 16 * 1rem);
+    }
+  }
+
+  .c-fv-note {
+    &--top {
+      width: calc(161 / 375 * 100vw);
+      max-width: 200px;
+      margin-left: auto;
+
+      @include respond-to("lg") {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        width: 100%;
+        max-width: none;
+      }
+    }
+
+    &--info {
+      display: none;
+    }
+
+    &__image {
+      @include respond-to("lg") {
+        grid-column: 11 / 13;
+        max-width: 300px;
+        margin-left: auto;
+      }
+    }
+
+    .l-image {
+      margin-bottom: calc(16 / 16 * 1rem);
+      position: relative;
+
+      .mask {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba($color: #080807, $alpha: 0.25);
+      }
+    }
+
+    &__text {
+      font-size: clamp(0.625rem, 0.581rem + 0.1878vw, 0.75rem);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__foot {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+
+    @include respond-to("lg") {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  &__title {
+    @include font-satoshi();
+    color: #d1d1c7;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+
+    &--top {
+      font-size: clamp(6.75rem, 4.0469rem + 11.5332vw, 22.5rem);
+    }
+
+    &--info {
+      font-size: clamp(6.25rem, 3.4611rem + 11.8993vw, 22.5rem);
+    }
+  }
+
+  &__desc {
+    font-size: clamp(0.625rem, 0.581rem + 0.1878vw, 0.75rem);
+
+    @include respond-to("lg") {
+      grid-column: 11 / 13;
+      max-width: 300px;
+    }
+  }
+}
+
+//Cta
 .c-cta {
   width: 100%;
 

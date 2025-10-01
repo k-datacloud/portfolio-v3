@@ -2,6 +2,7 @@
 import "../styles/top.scss";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Loading from "../components/Loading.astro";
+import Fv from "../components/Fv.astro";
 import Cta from "../components/Cta.astro";
 ---
 
@@ -18,52 +19,7 @@ import Cta from "../components/Cta.astro";
     <span class="cursor__text c-text"></span>
   </div>
 
-  <section class="p-top-kv">
-    <div class="l-wrapper p-top-kv__wrapper">
-      <div class="p-top-kv__head">
-        <div class="c-location-time js-location-time">
-          <div class="c-location-time__location">
-            <span class="c-text">Tokyo, Japan</span>
-          </div>
-          <div class="c-location-time__time">
-            <span class="c-text js-time-hour"></span>
-            <span class="c-text blink">:</span>
-            <span class="c-text js-time-minute"></span>
-          </div>
-          <div>
-            <span class="c-text js-time-ampm"></span>
-          </div>
-        </div>
-        <div class="c-nameplate">
-          <span class="c-text">K.S</span>
-          <span class="c-text is-pc">Developer, Designer</span>
-        </div>
-      </div>
-      <div class="p-top-kv__body">
-        <div class="forest">
-          <img src="/img/p-top-kv.jpg" alt="" />
-          <span class="mask"></span>
-        </div>
-        <div class="p-top-kv__main">
-          <h2 class="c-heading p-top-kv__title">
-            Who The Hell
-            <br />Are You?
-          </h2>
-          <h3 class="c-lead p-top-kv__lead">(???)</h3>
-          <p class="c-text p-top-kv__description">
-            I’m trying to make something.
-            <br />Not just for you.
-            <br />Maybe not even for me.
-          </p>
-        </div>
-        <div class="p-top-kv__foot">
-          <div class="c-badge">
-            <span class="c-badge__text">Proceed</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <Fv isTop={true} title="wh?o" badgeText="Proceed" />
 
   <section class="p-top-intro">
     <div class="l-wrapper p-top-intro__wrapper">
@@ -110,8 +66,8 @@ import Cta from "../components/Cta.astro";
           <div>
             <p class="c-text">
               Well.. sure it would be nice though
-              <br />if my work got featured on Awwwards
-              <br />or something.
+              <br class="br-pc" />if my work got featured on
+              <br class="br-pc" />Awwwards or something.
             </p>
           </div>
         </div>

@@ -2,6 +2,7 @@
 import "../styles/info.scss";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Cta from "../components/Cta.astro";
+import Fv from "../components/Fv.astro";
 ---
 
 <BaseLayout
@@ -9,41 +10,8 @@ import Cta from "../components/Cta.astro";
   title="Info | Kaisei Sadatoki | Front-end Developer & Designer"
   description="Kaisei Sadatoki’s portfolio website version 3. I’m a  activefront-end developer and designer from Hyogo, Japan, creating websites and digital experiences."
 >
-  <section class="p-info-kv">
-    <div class="l-wrapper p-info-kv__wrapper">
-      <div class="p-info-kv__container">
-        <div class="p-info-kv__top">
-          <div class="kv-top-bar">
-            <div class="c-location-time js-location-time">
-              <div class="c-location-time__location">
-                <span class="c-text">Tokyo, Japan</span>
-              </div>
-              <div class="c-location-time__time">
-                <span class="c-text js-time-hour"></span>
-                <span class="c-text blink">:</span>
-                <span class="c-text js-time-minute"></span>
-              </div>
-              <div>
-                <span class="c-text js-time-ampm"></span>
-              </div>
-            </div>
-            <div class="c-nameplate">
-              <span class="c-text">K.S</span>
-              <span class="c-text is-pc">Developer, Designer</span>
-            </div>
-          </div>
-        </div>
-        <div class="p-info-kv__main">
-          <h2 class="c-heading p-info-kv__title">in/fo</h2>
-        </div>
-        <div class="p-info-kv__badge">
-          <div class="c-badge">
-            <span class="c-badge__text">scroll down</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <Fv isTop={false} title="in/fo" badgeText="scroll down" />
+
   <section class="p-info-profile">
     <div class="l-wrapper p-info-profile__wrapper">
       <div class="p-info-profile__image">
@@ -119,10 +87,10 @@ import Cta from "../components/Cta.astro";
               <span class="circle"></span>achievement
             </h4>
           </div>
-          <div class="archive__label">
+          <div class="archive__label archive__label--achievement">
             <span class="c-text archive__tag">award</span>
           </div>
-          <div class="archive__content">
+          <div class="archive__content archive__content--achievement">
             <p class="c-text">Not yet ―</p>
           </div>
         </article>
@@ -132,10 +100,10 @@ import Cta from "../components/Cta.astro";
               <span class="circle"></span>personal
             </h4>
           </div>
-          <div class="archive__label">
+          <div class="archive__label archive__label--personal">
             <span class="c-text archive__tag">curiosity</span>
           </div>
-          <div class="archive__content">
+          <div class="archive__content archive__content--personal">
             <p class="c-text">Learning English</p>
           </div>
         </article>

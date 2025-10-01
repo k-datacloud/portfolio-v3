@@ -1,0 +1,56 @@
+---
+const { isTop, title, badgeText } = Astro.props;
+---
+
+<section class="c-fv">
+  <div class="l-wrapper c-fv__wrapper">
+    <div class="c-fv__container">
+      <div class="c-fv__head">
+        <div class="c-location-time js-location-time">
+          <div class="c-location-time__location">
+            <span class="c-text">Tokyo, Japan</span>
+          </div>
+          <div class="c-location-time__time">
+            <span class="c-text js-time-hour"></span>
+            <span class="c-text blink">:</span>
+            <span class="c-text js-time-minute"></span>
+          </div>
+          <div>
+            <span class="c-text js-time-ampm"></span>
+          </div>
+        </div>
+        <div class="c-nameplate">
+          <span class="c-text">K.S</span>
+          <span class="c-text is-pc">Developer, Designer</span>
+        </div>
+      </div>
+      <div
+        class={isTop ? "c-fv-note c-fv-note--top" : "c-fv-note c-fv-note--info"}
+      >
+        <div class="c-fv-note__image">
+          <div class="l-image">
+            <span class="mask"></span>
+            <img src="/img/p-top-kv.jpg" alt="" />
+          </div>
+          <p class="c-fv-note__text c-text">
+            I'm trying to make something.
+            <br />Not just for you.
+            <br />Maybe not even for me.
+          </p>
+        </div>
+      </div>
+      <div class="c-fv__foot">
+        <h2
+          class={isTop
+            ? "c-fv__title c-fv__title--top"
+            : "c-fv__title c-fv__title--info"}
+        >
+          {title}
+        </h2>
+        <div class="c-badge">
+          <span class="c-badge__text">{badgeText}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
