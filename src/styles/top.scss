@@ -27,16 +27,11 @@
 
   &__container {
     display: flex;
-    gap: 32px;
-  }
+    gap: 24px;
 
-  &__info {
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    right: 10%;
-    bottom: 120px;
+    @include respond-to("lg") {
+      gap: 32px;
+    }
   }
 
   &__text {
@@ -45,6 +40,38 @@
     color: #d1d1c7;
     @include font-satoshi;
     font-weight: 500;
+  }
+
+  .c-text {
+    font-weight: 400;
+  }
+
+  .loading-text {
+    .text-wrapper {
+      display: block;
+      position: relative;
+    }
+
+    &__line {
+      display: block;
+
+      // &--intro {
+      //   transform: translateY(100%);
+      // }
+
+      &--middle {
+        position: absolute;
+        white-space: nowrap;
+        top: 100%;
+        left: 0;
+      }
+
+      &--end {
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
+    }
   }
 
   .loading-number {
