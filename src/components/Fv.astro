@@ -9,9 +9,7 @@ const { isTop, title, badgeText } = Astro.props;
         <div class="c-datetime js-datetime">
           <span class="text-wrapper">
             <span
-              class={isTop
-                ? "c-datetime__wrapper js-fv-tag-line"
-                : "c-datetime__wrapper c-datetime__wrapper--info js-fv-tag-line"}
+              class="c-datetime__wrapper c-datetime__wrapper--fv js-fv-tag-line"
             >
               <span class="c-datetime-location">
                 <span class="c-text">Tokyo, Japan</span>
@@ -28,9 +26,7 @@ const { isTop, title, badgeText } = Astro.props;
         <div class="c-nameplate">
           <span class="text-wrapper">
             <span
-              class={isTop
-                ? "c-nameplate__wrapper js-fv-tag-line"
-                : "c-nameplate__wrapper c-nameplate__wrapper--info js-fv-tag-line"}
+              class="c-nameplate__wrapper c-nameplate__wrapper--fv js-fv-tag-line"
             >
               <span class="c-text">K.S</span>
               <span class="c-text is-pc">Developer, Designer</span>
@@ -42,14 +38,28 @@ const { isTop, title, badgeText } = Astro.props;
         class={isTop ? "c-fv-note c-fv-note--top" : "c-fv-note c-fv-note--info"}
       >
         <div class="c-fv-note__image">
-          <div class="l-image">
+          <div class="l-image js-fv-image">
             <span class="mask"></span>
             <img src="/img/p-top-kv.jpg" alt="" />
           </div>
           <p class="c-fv-note__text c-text">
-            I'm trying to make something.
-            <br />Not just for you.
-            <br />Maybe not even for me.
+            <span class="text-wrapper">
+              <span class="c-fv-note__line js-split-line-fv"
+                >I'm trying to make something.</span
+              >
+            </span>
+            <br />
+            <span class="text-wrapper">
+              <span class="c-fv-note__line js-split-line-fv"
+                >Not just for you.</span
+              >
+            </span>
+            <br />
+            <span class="text-wrapper">
+              <span class="c-fv-note__line js-split-line-fv"
+                >Maybe not even for me.</span
+              >
+            </span>
           </p>
         </div>
       </div>

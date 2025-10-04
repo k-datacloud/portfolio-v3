@@ -11,9 +11,9 @@ import Cta from "../components/Cta.astro";
   title="Kaisei Sadatoki | Front-end Developer & Designer"
   description="My Portfolio"
 >
-  <!-- <Fragment slot="loader">
+  <Fragment slot="loader">
     <Loading />
-  </Fragment> -->
+  </Fragment>
 
   <div class="cursor">
     <span class="cursor__text c-text"></span>
@@ -113,8 +113,10 @@ import Cta from "../components/Cta.astro";
             </div>
           </div>
           <div class="project-card__side">
-            <p class="project-card__project-name c-heading">
-              <span class="text-wrapper js-split-text">Portfolio</span>
+            <p
+              class="project-card__project-name c-heading c-heading--project-name"
+            >
+              <span class="text-wrapper js-split-text">PORTFOLIO</span>
             </p>
           </div>
         </article>
@@ -135,9 +137,9 @@ import Cta from "../components/Cta.astro";
           </div>
           <div class="project-card__side project-card__side--odd">
             <p
-              class="project-card__project-name project-card__project-name--odd c-heading"
+              class="project-card__project-name project-card__project-name--odd c-heading c-heading--project-name"
             >
-              <span class="text-wrapper js-split-text">Upcoming</span>
+              <span class="text-wrapper js-split-text">UPCOMING</span>
             </p>
           </div>
         </article>

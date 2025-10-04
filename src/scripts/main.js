@@ -20,262 +20,434 @@ const mainScript = () => {
   const footer = document.querySelector(".footer");
 
   if (window.location.pathname === "/") {
-    runLenis();
-    // const html = document.querySelector("html");
-    // const body = document.querySelector("body");
-    // const main = document.querySelector(".main");
-    // const loading = document.querySelector(".js-loading");
-    // const kvTagText = document.querySelectorAll(".p-top-kv__tag-line");
-    // gsap.set([html], {
-    //   overflow: "hidden",
-    //   height: "100%",
-    // });
-    // gsap.set(loading, {
-    //   display: "block",
-    //   opacity: 1,
-    //   pointerEvents: "auto",
-    // });
-    // gsap.set(main, {
-    //   pointerEvents: "none",
-    // });
-    // gsap.set(kvTagText, {
-    //   yPercent: 100,
-    // });
+    window.addEventListener("load", () => {
+      const hasVisited = sessionStorage.getItem("visited");
 
-    // const digitWrappers = document.querySelectorAll(".js-digit");
-    // const digitHeight = digitWrappers[0].getBoundingClientRect().height;
-    // const loadingText = document.querySelectorAll(".loading .c-text");
-    // digitWrappers.forEach((item) => {
-    //   item.style.height = digitHeight + "px";
-    // });
+      if (!hasVisited) {
+        sessionStorage.setItem("visited", true);
+        runLoadingAnimation();
+      } else {
+        skipLoadingAnimation();
+      }
+    });
 
-    // digitWrappers.forEach((wrapper) => {
-    //   for (let i = 1; i <= 9; i++) {
-    //     const span = document.createElement("span");
-    //     span.classList.add("digit");
-    //     span.classList.add("loading__text");
-    //     span.textContent = i;
-    //     wrapper.appendChild(span);
-    //   }
+    const runLoadingAnimation = () => {
+      const html = document.querySelector("html");
+      const body = document.querySelector(".body");
+      const main = document.querySelector(".main");
+      const loading = document.querySelector(".js-loading");
+      const fvTagLine = document.querySelectorAll(".js-fv-tag-line");
+      const topFvImage = document.querySelector(".js-fv-image");
+      const topFvBodyLine = document.querySelectorAll(".js-split-line-fv");
+      const topFvTitle = document.querySelector(".c-fv__title--top");
+      const topFvTitleContent = document.querySelector(
+        ".c-fv__title--info .text-wrapper"
+      );
+      const chars = topFvTitle.textContent.trim().split("");
+      topFvTitle.textContent = "";
+      chars.forEach((char) => {
+        const span = document.createElement("span");
+        span.classList.add("c-char");
+        span.classList.add("c-char--top");
+        span.textContent = char;
+        topFvTitle.appendChild(span);
+      });
+      const topFvTitleChars = document.querySelectorAll(".c-char--top");
+      gsap.set([html, body], {
+        overflow: "hidden",
+        height: "100%",
+      });
+      gsap.set(loading, {
+        display: "block",
+        opacity: 1,
+        pointerEvents: "auto",
+      });
+      gsap.set(main, {
+        pointerEvents: "none",
+        opacity: 0,
+      });
+      gsap.set(fvTagLine, {
+        yPercent: 100,
+      });
+      gsap.set(topFvTitle, {
+        opacity: 0,
+      });
+      gsap.set(topFvTitleChars, {
+        yPercent: 100,
+        opacity: 0,
+      });
+      gsap.set(topFvImage, {
+        clipPath: "inset(100% 0 0 0)",
+      });
+      gsap.set(topFvBodyLine, {
+        yPercent: 100,
+        opacity: 0,
+      });
 
-    //   digitWrappers[1].querySelectorAll(".digit").forEach((digit) => {
-    //     digit.classList.add("digit--one");
-    //   });
+      const digitWrappers = document.querySelectorAll(".js-digit");
+      const digitHeight = digitWrappers[0].getBoundingClientRect().height;
+      const loadingText = document.querySelectorAll(".loading .c-text");
+      digitWrappers.forEach((item) => {
+        item.style.height = digitHeight + "px";
+      });
 
-    //   digitWrappers[0].querySelectorAll(".digit").forEach((digit) => {
-    //     digit.classList.add("digit--ten");
-    //   });
-    // });
+      digitWrappers.forEach((wrapper) => {
+        for (let i = 1; i <= 9; i++) {
+          const span = document.createElement("span");
+          span.classList.add("digit");
+          span.classList.add("loading__text");
+          span.textContent = i;
+          wrapper.appendChild(span);
+        }
 
-    // const digits = document.querySelectorAll(".digit");
-    // const digitone = document.querySelectorAll(".digit--one");
-    // const digitten = document.querySelectorAll(".digit--ten");
-    // const digithundred = document.querySelector(".digit--hundred");
-    // const loadingLine = document.querySelector(".loading-text .text-wrapper");
-    // const loadingLineIntro = document.querySelector(
-    //   ".loading-text__line--intro"
-    // );
-    // const loadingLineMiddle = document.querySelector(
-    //   ".loading-text__line--middle"
-    // );
-    // const loadingLineEnd = document.querySelector(".loading-text__line--end");
-    // const loadingTextLines = document.querySelectorAll(".loading-text__line");
-    // const maxWidthText = loadingLineMiddle.getBoundingClientRect().width;
-    // loadingLine.style.width = maxWidthText + "px";
+        digitWrappers[1].querySelectorAll(".digit").forEach((digit) => {
+          digit.classList.add("digit--one");
+        });
 
-    // const openingAnimation = () => {
-    //   const timeline = gsap.timeline();
-    //   const digitoneFirst = Math.floor(Math.random() * 9) + 1;
-    //   const digittenFirst = Math.floor(Math.random() * 5) + 1;
-    //   const spinDuration = 1.7;
-    //   const easing = "power1.out";
+        digitWrappers[0].querySelectorAll(".digit").forEach((digit) => {
+          digit.classList.add("digit--ten");
+        });
+      });
 
-    //   gsap.set(digithundred, {
-    //     yPercent: 100,
-    //     display: "block",
-    //   });
+      const digits = document.querySelectorAll(".digit");
+      const digitone = document.querySelectorAll(".digit--one");
+      const digitten = document.querySelectorAll(".digit--ten");
+      const digithundred = document.querySelector(".digit--hundred");
+      const loadingLine = document.querySelector(".loading-text .text-wrapper");
+      const loadingLineIntro = document.querySelector(
+        ".loading-text__line--intro"
+      );
+      const loadingLineMiddle = document.querySelector(
+        ".loading-text__line--middle"
+      );
+      const loadingLineEnd = document.querySelector(".loading-text__line--end");
+      const loadingTextLines = document.querySelectorAll(".loading-text__line");
+      const maxWidthText = loadingLineMiddle.getBoundingClientRect().width;
+      loadingLine.style.width = maxWidthText + "px";
+      const timeline = gsap.timeline();
+      const digitoneFirst = Math.floor(Math.random() * 9) + 1;
+      const digittenFirst = Math.floor(Math.random() * 5) + 1;
+      const spinDuration = 1.7;
+      const easing = "power2.out";
 
-    //   gsap.set(loadingLineIntro, {
-    //     yPercent: 100,
-    //   });
+      gsap.set(digithundred, {
+        yPercent: 100,
+        display: "block",
+      });
 
-    //   gsap.set(loadingLineMiddle, {
-    //     yPercent: 0,
-    //   });
+      gsap.set(loadingLineIntro, {
+        yPercent: 100,
+      });
 
-    //   gsap.set(loadingLineEnd, {
-    //     yPercent: 0,
-    //   });
+      gsap.set(loadingLineMiddle, {
+        yPercent: 0,
+      });
 
-    //   timeline.to(
-    //     digitone,
-    //     {
-    //       y: -digitHeight * digitoneFirst,
-    //       duration: spinDuration,
-    //       ease: easing,
-    //     },
-    //     "start"
-    //   );
+      gsap.set(loadingLineEnd, {
+        yPercent: 0,
+      });
 
-    //   timeline.to(
-    //     digitten,
-    //     {
-    //       y: -digitHeight * digittenFirst,
-    //       duration: spinDuration,
-    //       ease: easing,
-    //     },
-    //     "start"
-    //   );
+      timeline.to(
+        digitone,
+        {
+          y: -digitHeight * digitoneFirst,
+          duration: spinDuration + 0.3,
+          ease: easing,
+        },
+        "start"
+      );
 
-    //   timeline.to(
-    //     loadingLineIntro,
-    //     {
-    //       yPercent: 0,
-    //       duration: spinDuration,
-    //       ease: easing,
-    //     },
-    //     "start"
-    //   );
+      timeline.to(
+        digitten,
+        {
+          y: -digitHeight * digittenFirst,
+          duration: spinDuration + 0.3,
+          ease: easing,
+        },
+        "start"
+      );
 
-    //   const digitoneSecond = Math.floor(Math.random() * 9) + 1;
-    //   let digittenSecond = Math.floor(Math.random() * 5) + 5;
+      timeline.to(
+        loadingLineIntro,
+        {
+          yPercent: 0,
+          duration: spinDuration + 0.3,
+          ease: easing,
+        },
+        "start"
+      );
 
-    //   timeline.to(
-    //     digitone,
-    //     {
-    //       y: -digitHeight * digitoneSecond,
-    //       duration: spinDuration,
-    //       ease: easing,
-    //     },
-    //     "second"
-    //   );
+      const digitoneSecond = Math.floor(Math.random() * 9) + 1;
+      let digittenSecond = Math.floor(Math.random() * 5) + 5;
 
-    //   timeline.to(
-    //     digitten,
-    //     {
-    //       y: -digitHeight * digittenSecond,
-    //       duration: spinDuration,
-    //       ease: easing,
-    //     },
-    //     "second"
-    //   );
+      timeline.to(
+        digitone,
+        {
+          y: -digitHeight * digitoneSecond,
+          duration: spinDuration,
+          ease: easing,
+        },
+        "second"
+      );
 
-    //   timeline.to(
-    //     loadingLineIntro,
-    //     {
-    //       yPercent: -100,
-    //       duration: spinDuration,
-    //       ease: easing,
-    //     },
-    //     "second"
-    //   );
+      timeline.to(
+        digitten,
+        {
+          y: -digitHeight * digittenSecond,
+          duration: spinDuration,
+          ease: easing,
+        },
+        "second"
+      );
 
-    //   timeline.to(
-    //     loadingLineMiddle,
-    //     {
-    //       yPercent: -100,
-    //       duration: spinDuration,
-    //       ease: easing,
-    //     },
-    //     "second"
-    //   );
+      timeline.to(
+        loadingLineIntro,
+        {
+          yPercent: -100,
+          duration: spinDuration,
+          ease: easing,
+        },
+        "second"
+      );
 
-    //   timeline.to(
-    //     digits,
-    //     {
-    //       y: 0,
-    //       duration: spinDuration,
-    //       ease: easing,
-    //     },
-    //     "final"
-    //   );
+      timeline.to(
+        loadingLineMiddle,
+        {
+          yPercent: -100,
+          duration: spinDuration,
+          ease: easing,
+        },
+        "second"
+      );
 
-    //   timeline.to(
-    //     digithundred,
-    //     {
-    //       yPercent: 0,
-    //       duration: spinDuration,
-    //       ease: easing,
-    //     },
-    //     "final"
-    //   );
+      timeline.to(
+        digits,
+        {
+          y: 0,
+          duration: spinDuration,
+          ease: easing,
+        },
+        "final"
+      );
 
-    //   timeline.to(
-    //     loadingLineMiddle,
-    //     {
-    //       yPercent: -200,
-    //       duration: spinDuration,
-    //       ease: easing,
-    //     },
-    //     "final"
-    //   );
+      timeline.to(
+        digithundred,
+        {
+          yPercent: 0,
+          duration: spinDuration,
+          ease: easing,
+        },
+        "final"
+      );
 
-    //   timeline.to(
-    //     loadingLineEnd,
-    //     {
-    //       yPercent: -100,
-    //       duration: spinDuration,
-    //       ease: easing,
-    //     },
-    //     "final"
-    //   );
+      timeline.to(
+        loadingLineMiddle,
+        {
+          yPercent: -200,
+          duration: spinDuration,
+          ease: easing,
+        },
+        "final"
+      );
 
-    //   timeline.to(loadingText, {
-    //     clipPath: "inset(0% 0% 100% 0%)",
-    //     duration: 1.5,
-    //     ease: "power2.out",
-    //   });
+      timeline.to(
+        loadingLineEnd,
+        {
+          yPercent: -100,
+          duration: spinDuration,
+          ease: easing,
+        },
+        "final"
+      );
 
-    //   timeline.to(
-    //     loading,
-    //     {
-    //       opacity: 0,
-    //       pointerEvents: "none",
-    //       duration: 2,
-    //       ease: "sine.in",
-    //       onComplete: () => {
-    //         gsap.set(loading, {
-    //           display: "none",
-    //           opacity: 0,
-    //           pointerEvents: "none",
-    //         });
-    //       },
-    //     },
-    //     "view"
-    //   );
+      timeline.to(loadingText, {
+        clipPath: "inset(0% 0% 100% 0%)",
+        duration: 1.5,
+        ease: "power2.out",
+      });
 
-    //   timeline.to(
-    //     main,
-    //     {
-    //       pointerEvents: "auto",
-    //       duration: 1,
-    //       ease: "sine.in",
-    //     },
-    //     "view"
-    //   );
+      timeline.to(
+        loading,
+        {
+          opacity: 0,
+          pointerEvents: "none",
+          duration: 1.5,
+          ease: "sine.in",
+          onComplete: () => {
+            gsap.set(loading, {
+              display: "none",
+              opacity: 0,
+              pointerEvents: "none",
+            });
+          },
+        },
+        "view"
+      );
 
-    //   timeline.to(
-    //     kvTagText,
-    //     {
-    //       yPercent: 0,
-    //       duration: 1.5,
-    //       ease: "power2.out",
-    //       onComplete: () => {
-    //         gsap.set([html], {
-    //           overflow: "auto",
-    //           height: "auto",
-    //         });
-    //         gsap.set(main, {
-    //           pointerEvents: "auto",
-    //         });
-    //         runLenis();
-    //       },
-    //     },
-    //     "+=0.5"
-    //   );
-    // };
+      timeline
+        .to(main, {
+          pointerEvents: "auto",
+          opacity: 1,
+        })
 
-    // openingAnimation();
+        .to(topFvTitle, {
+          opacity: 1,
+        })
+
+        .to(
+          fvTagLine,
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.In",
+          },
+          "view1"
+        )
+
+        .to(
+          topFvTitleChars,
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.In",
+            stagger: 0.1,
+          },
+          "view1"
+        )
+
+        .to(
+          topFvImage,
+          {
+            clipPath: "inset(0% 0 0 0)",
+            duration: 1,
+            ease: "power2.In",
+          },
+          "view1"
+        )
+
+        .to(
+          topFvBodyLine,
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.In",
+            stagger: 0.1,
+          },
+          "view1"
+        )
+
+        .to([html, body], {
+          height: "auto",
+          overflow: "auto",
+          onComplete: () => {
+            runLenis();
+          },
+        });
+    };
+    const skipLoadingAnimation = () => {
+      runLenis();
+      const loading = document.querySelector(".js-loading");
+      loading.style.display = "none";
+      const fvTagLine = document.querySelectorAll(".js-fv-tag-line");
+      const topFvImage = document.querySelector(".js-fv-image");
+      const topFvBodyLine = document.querySelectorAll(".js-split-line-fv");
+      const topFvTitle = document.querySelector(".c-fv__title--top");
+      const topFvTitleContent = document.querySelector(
+        ".c-fv__title--info .text-wrapper"
+      );
+      const chars = topFvTitle.textContent.trim().split("");
+      topFvTitle.textContent = "";
+      chars.forEach((char) => {
+        const span = document.createElement("span");
+        span.classList.add("c-char");
+        span.classList.add("c-char--top");
+        span.textContent = char;
+        topFvTitle.appendChild(span);
+      });
+      const topFvTitleChars = document.querySelectorAll(".c-char--top");
+      const timeline = gsap.timeline();
+
+      // gsap.set(loading, {
+      //   display: "none",
+      //   opacity: 0,
+      //   pointerEvents: "none",
+      // });
+
+      gsap.set(topFvTitle, {
+        opacity: 0,
+      });
+      gsap.set(fvTagLine, {
+        yPercent: 100,
+        opacity: 0,
+      });
+
+      gsap.set(topFvTitleChars, {
+        yPercent: 100,
+        opacity: 0,
+      });
+
+      gsap.set(topFvImage, {
+        clipPath: "inset(100% 0 0 0)",
+      });
+
+      gsap.set(topFvBodyLine, {
+        yPercent: 100,
+        opacity: 0,
+      });
+
+      timeline
+        .to(topFvTitle, {
+          opacity: 1,
+        })
+
+        .to(
+          fvTagLine,
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.In",
+          },
+          "view1"
+        )
+
+        .to(
+          topFvTitleChars,
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.In",
+            stagger: 0.1,
+          },
+          "view1"
+        )
+
+        .to(
+          topFvImage,
+          {
+            clipPath: "inset(0% 0 0 0)",
+            duration: 1,
+            ease: "power2.In",
+          },
+          "view1"
+        )
+
+        .to(
+          topFvBodyLine,
+          {
+            yPercent: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.In",
+            stagger: 0.1,
+          },
+          "view1"
+        );
+    };
 
     // intro section
     const introDesc = document.querySelector(".p-top-intro__desc");
@@ -374,7 +546,8 @@ const mainScript = () => {
 
     //Fv section
     const fvHeadTag = document.querySelectorAll(".js-fv-tag-line");
-    const infoFvTitle = document.querySelector(
+    const infoFvTitle = document.querySelector(".c-fv__title--info");
+    const infoFvTitleContent = document.querySelector(
       ".c-fv__title--info .text-wrapper"
     );
     const chars = infoFvTitle.textContent.trim().split("");
@@ -394,12 +567,19 @@ const mainScript = () => {
       opacity: 0,
     });
 
+    gsap.set(infoFvTitle, {
+      opacity: 0,
+    });
+
     gsap.set(infoFvTitleChars, {
       yPercent: 100,
       opacity: 0,
     });
 
     timeline
+      .to(infoFvTitle, {
+        opacity: 1,
+      })
       .to(
         fvHeadTag,
         {

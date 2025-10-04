@@ -193,7 +193,6 @@ body {
   font-weight: 500;
   @include font-satoshi;
   color: #d1d1c7;
-  // text-transform: capitalize;
 
   &--black {
     color: #080807;
@@ -246,7 +245,7 @@ body {
     display: flex;
     gap: 24px;
 
-    &--info {
+    &--fv {
       opacity: 0;
     }
   }
@@ -258,7 +257,7 @@ body {
     align-items: center;
     gap: 8px;
 
-    &--info {
+    &--fv {
       opacity: 0;
     }
   }
@@ -274,10 +273,6 @@ body {
 
   .blink {
     animation: blink 1.5s infinite;
-  }
-
-  .c-text {
-    line-height: 1;
   }
 
   @keyframes blink {
@@ -325,22 +320,21 @@ body {
 }
 
 .c-badge {
-  position: absolute;
-  right: clamp(20px, calc(6.957px + 3.478vw), 96px);
-  bottom: -48px;
+  width: fit-content;
+  margin-left: auto;
   background-color: #eaeaea;
-  padding: 6px 40px;
-  border-radius: 20px;
+  padding: 4px 40px;
+  border-radius: 40px;
 
   @include respond-to("lg") {
     position: static;
-    padding: 8px 48px;
+    padding: 6px 48px;
   }
 
   &__text {
     display: inline-block;
     font-size: clamp(0.625rem, 0.581rem + 0.1878vw, 0.75rem);
-    line-height: 1;
+    line-height: 1.5;
     text-transform: capitalize;
     color: #080807;
 
@@ -353,6 +347,7 @@ body {
 //menu button & nav menu
 .c-menu-toggle {
   position: fixed;
+  opacity: 0;
   z-index: 9999;
   top: 28px;
   right: 20px;
@@ -502,8 +497,8 @@ body {
   height: 100svh;
 
   &__wrapper {
-    padding-top: 32px;
-    padding-bottom: 32px;
+    padding-top: 24px;
+    padding-bottom: 24px;
     width: 100%;
     height: 100%;
     position: relative;
@@ -553,6 +548,7 @@ body {
     }
 
     .l-image {
+      clip-path: inset(100% 0 0 0);
       margin-bottom: calc(16 / 16 * 1rem);
       position: relative;
 
@@ -564,22 +560,32 @@ body {
         left: 0;
         background-color: rgba($color: #080807, $alpha: 0.25);
       }
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+
+    .text-wrapper {
+      line-height: 1.3;
+    }
+
+    &__line {
+      display: inline-block;
+      opacity: 0;
     }
 
     &__text {
       font-size: clamp(0.625rem, 0.581rem + 0.1878vw, 0.75rem);
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
     }
   }
 
   &__foot {
     display: flex;
     flex-direction: column;
+    gap: 16px;
     margin-top: auto;
 
     @include respond-to("lg") {
@@ -598,10 +604,12 @@ body {
 
     &--top {
       font-size: clamp(6.75rem, 4.0469rem + 11.5332vw, 22.5rem);
+      opacity: 0;
     }
 
     &--info {
       font-size: clamp(6.25rem, 3.4611rem + 11.8993vw, 22.5rem);
+      opacity: 0;
     }
   }
 
@@ -733,23 +741,6 @@ body {
     }
   }
 
-  // .swing {
-  //   animation: swing 5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-  //   transform-origin: top left;
-
-  //   @keyframes swing {
-  //     0% {
-  //       transform: rotate(0deg);
-  //     }
-  //     50% {
-  //       transform: rotate(4deg);
-  //     }
-  //     100% {
-  //       transform: rotate(0deg);
-  //     }
-  //   }
-  // }
-
   &__text {
     text-align: center;
     margin-bottom: calc(80 / 16 * 1rem);
@@ -785,7 +776,7 @@ body {
       display: flex;
       gap: 8px;
       transform: translateY(0);
-      transition: transform 0.3s ease-out;
+      transition: transform 0.4s;
 
       &--hover {
         position: absolute;
