@@ -367,14 +367,17 @@ body {
     gap: 10px;
   }
 
+  .text-wrapper {
+    position: relative;
+  }
+
   &__text {
     text-transform: uppercase;
     display: inline-block;
 
     &--hover {
       position: absolute;
-      top: 100%;
-      right: 0;
+      left: 0;
     }
   }
 
@@ -405,8 +408,8 @@ body {
   .l-wrapper {
     width: 100%;
     height: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 24px;
+    padding-bottom: 24px;
 
     @include respond-to("lg") {
       padding-top: 32px;

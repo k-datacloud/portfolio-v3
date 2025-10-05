@@ -726,10 +726,10 @@ const mainScript = () => {
       {
         yPercent: 0,
         opacity: 1,
-        duration: 1,
+        duration: 0.8,
         ease: "power4.Out",
       },
-      "start-=.4"
+      "start-=.2"
     )
 
     .to(
@@ -737,11 +737,11 @@ const mainScript = () => {
       {
         yPercent: 0,
         opacity: 1,
-        duration: 1,
+        duration: 0.8,
         ease: "power4.Out",
         stagger: 0.1,
       },
-      "start-=.4"
+      "start-=.2"
     );
 
   const openNav = () => {
