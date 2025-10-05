@@ -717,7 +717,7 @@ const mainScript = () => {
     .to(navMenu, {
       pointerEvents: "auto",
       clipPath: "inset(0 0 0% 0)",
-      duration: 0.7,
+      duration: 0.8,
       ease: "power4.Out",
     })
 
@@ -727,9 +727,9 @@ const mainScript = () => {
         yPercent: 0,
         opacity: 1,
         duration: 1,
-        ease: "power2.Out",
+        ease: "power4.Out",
       },
-      "start"
+      "start-=.4"
     )
 
     .to(
@@ -738,10 +738,10 @@ const mainScript = () => {
         yPercent: 0,
         opacity: 1,
         duration: 1,
-        ease: "power2.Out",
+        ease: "power4.Out",
         stagger: 0.1,
       },
-      "start"
+      "start-=.4"
     );
 
   const openNav = () => {
