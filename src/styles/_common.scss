@@ -248,6 +248,10 @@ body {
     &--fv {
       opacity: 0;
     }
+
+    &--nav {
+      opacity: 0;
+    }
   }
 }
 
@@ -413,7 +417,11 @@ body {
   &__head {
     display: flex;
     justify-content: space-between;
-    margin-bottom: calc(80 / 16 * 1rem);
+    margin-bottom: calc(48 / 16 * 1rem);
+
+    @include respond-to("lg") {
+      margin-bottom: calc(120 / 16 * 1rem);
+    }
 
     .c-text {
       color: #080807;
@@ -424,14 +432,12 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 146px;
+    gap: 96px;
 
     @include respond-to("lg") {
-      display: grid;
+      flex-direction: row;
+      justify-content: space-between;
       gap: 0;
-      height: auto;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: auto;
     }
   }
 
@@ -448,26 +454,76 @@ body {
     gap: 24px;
 
     @include respond-to("lg") {
-      grid-column: 11 / 13;
-      grid-row: 1 / 2;
-      align-self: end;
+      padding-right: 35px;
+      justify-content: flex-end;
       gap: 32px;
     }
   }
 
   .nav-list {
-    &__tag {
-      color: rgba($color: #080807, $alpha: 0.4);
-      margin-bottom: 8px;
-    }
-
-    &__item {
-      color: #080807;
+    &--primary {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     &--social {
       display: flex;
       flex-direction: column;
+      gap: 4px;
+    }
+
+    &__tag {
+      color: rgba($color: #080807, $alpha: 0.4);
+    }
+
+    &__item {
+      width: fit-content;
+      color: #080807;
+    }
+
+    &__link {
+      width: fit-content;
+      display: flex;
+
+      .text-wrapper {
+        position: relative;
+      }
+
+      @include respond-to("lg") {
+        &:hover .nav-list__text--default {
+          transform: translateY(-100%);
+        }
+
+        &:hover .nav-list__text--hover {
+          transform: translateY(-100%);
+        }
+      }
+    }
+
+    &__text {
+      display: inline-block;
+      transition: transform 0.4s;
+
+      &--default {
+        transform: translateY(0%);
+      }
+
+      &--hover {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        transform: translateY(0%);
+      }
+    }
+
+    &__social-text {
+      display: inline-block;
+
+      &--hover {
+        position: absolute;
+        left: 0;
+      }
     }
   }
 

@@ -642,6 +642,9 @@ const mainScript = () => {
   const menuToggle = document.querySelector(".js-menu-open");
   const menuClose = document.querySelector(".js-menu-close");
   const navMenu = document.querySelector(".js-nav-menu");
+  const navMenuSocial = document.querySelector(".js-nav-menu-social");
+  const navMenuItems = document.querySelectorAll(".js-nav-menu-item");
+  const navTagLine = document.querySelectorAll(".js-nav-tag-line");
   gsap.set(menuToggle, {
     pointerEvents: "none",
     opacity: 0,
@@ -649,6 +652,16 @@ const mainScript = () => {
   gsap.set(navMenu, {
     pointerEvents: "none",
     clipPath: "inset(0 0 100% 0)",
+  });
+
+  gsap.set(navTagLine, {
+    yPercent: 100,
+    opacity: 0,
+  });
+
+  gsap.set(navMenuItems, {
+    yPercent: 100,
+    opacity: 0,
   });
 
   gsap.to(menuToggle, {
@@ -696,35 +709,74 @@ const mainScript = () => {
     },
   });
 
-  menuToggle.addEventListener("click", () => {
-    // gsap.to(menuToggle, {
-    //   pointerEvents: "none",
-    //   opacity: 0,
-    //   duration: 1,
-    //   ease: "power2.out",
-    // });
-    gsap.to(navMenu, {
+  const navTimeline = gsap.timeline({
+    paused: true,
+  });
+
+  navTimeline
+    .to(navMenu, {
       pointerEvents: "auto",
       clipPath: "inset(0 0 0% 0)",
       duration: 0.7,
-      ease: "power3.in",
-    });
-  });
+      ease: "power4.Out",
+    })
 
-  menuClose.addEventListener("click", () => {
-    gsap.to(navMenu, {
-      opacity: 0,
-      duration: 0.5,
-      ease: "power2.out",
-      onComplete: () => {
-        gsap.set(navMenu, {
-          pointerEvents: "none",
-          clipPath: "inset(0 0 100% 0)",
-          clearProps: "opacity",
-        });
+    .to(
+      navTagLine,
+      {
+        yPercent: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.Out",
       },
+      "start"
+    )
+
+    .to(
+      navMenuItems,
+      {
+        yPercent: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.Out",
+        stagger: 0.1,
+      },
+      "start"
+    );
+
+  const openNav = () => {
+    menuToggle.addEventListener("click", () => {
+      navTimeline.play(0);
     });
-  });
+  };
+
+  const closeNav = () => {
+    menuClose.addEventListener("click", () => {
+      gsap.to(navMenu, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.out",
+        onComplete: () => {
+          gsap.set(navMenu, {
+            pointerEvents: "none",
+            clipPath: "inset(0 0 100% 0)",
+            clearProps: "opacity",
+          });
+          gsap.set(navTagLine, {
+            yPercent: 100,
+            opacity: 0,
+          });
+          gsap.set(navMenuItems, {
+            yPercent: 100,
+            opacity: 0,
+          });
+        },
+      });
+    });
+  };
+
+  openNav();
+  closeNav();
 
   // location time
   let offset;
@@ -891,8 +943,6 @@ const mainScript = () => {
   const hoverToggle = document.querySelectorAll(".js-hover-toggle");
   const defaultText = document.querySelectorAll(".js-hover-default");
   const hoverText = document.querySelectorAll(".js-hover-reveal");
-  const defaultIcon = document.querySelectorAll(".js-hover-icon-default");
-  const hoverIcon = document.querySelectorAll(".js-hover-icon-reveal");
   const lg = window.matchMedia("(min-width: 1024px)");
   let isHoverRegistered = false;
   gsap.set(defaultText, {
@@ -900,14 +950,6 @@ const mainScript = () => {
     opacity: 1,
   });
   gsap.set(hoverText, {
-    yPercent: 100,
-    opacity: 0,
-  });
-  gsap.set(defaultIcon, {
-    yPercent: 0,
-    opacity: 1,
-  });
-  gsap.set(hoverIcon, {
     yPercent: 100,
     opacity: 0,
   });
