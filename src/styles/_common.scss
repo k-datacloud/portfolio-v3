@@ -259,7 +259,11 @@ body {
   &__wrapper {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
+
+    @include respond-to("lg") {
+      gap: 8px;
+    }
 
     &--fv {
       opacity: 0;
