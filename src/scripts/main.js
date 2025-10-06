@@ -40,9 +40,7 @@ const mainScript = () => {
       const topFvImage = document.querySelector(".js-fv-image");
       const topFvBodyLine = document.querySelectorAll(".js-split-line-fv");
       const topFvTitle = document.querySelector(".c-fv__title--top");
-      const topFvTitleContent = document.querySelector(
-        ".c-fv__title--info .text-wrapper"
-      );
+      const topFvBadge = document.querySelector(".js-fv-badge");
       const chars = topFvTitle.textContent.trim().split("");
       topFvTitle.textContent = "";
       chars.forEach((char) => {
@@ -70,6 +68,9 @@ const mainScript = () => {
         yPercent: 100,
       });
       gsap.set(topFvTitle, {
+        opacity: 0,
+      });
+      gsap.set(topFvBadge, {
         opacity: 0,
       });
       gsap.set(topFvTitleChars, {
@@ -290,9 +291,21 @@ const mainScript = () => {
           opacity: 1,
         })
 
-        .to(topFvTitle, {
-          opacity: 1,
-        })
+        .to(
+          topFvTitle,
+          {
+            opacity: 1,
+          },
+          "view1"
+        )
+
+        .to(
+          topFvBadge,
+          {
+            opacity: 1,
+          },
+          "view1"
+        )
 
         .to(
           fvTagLine,
@@ -355,9 +368,7 @@ const mainScript = () => {
       const topFvImage = document.querySelector(".js-fv-image");
       const topFvBodyLine = document.querySelectorAll(".js-split-line-fv");
       const topFvTitle = document.querySelector(".c-fv__title--top");
-      const topFvTitleContent = document.querySelector(
-        ".c-fv__title--info .text-wrapper"
-      );
+      const topFvBadge = document.querySelector(".js-fv-badge");
       const chars = topFvTitle.textContent.trim().split("");
       topFvTitle.textContent = "";
       chars.forEach((char) => {
@@ -372,6 +383,9 @@ const mainScript = () => {
 
       gsap.set(topFvTitle, {
         opacity: 0,
+      });
+      gsap.set(topFvBadge, {
+        opacity: 1,
       });
       gsap.set(fvTagLine, {
         yPercent: 100,
@@ -396,6 +410,14 @@ const mainScript = () => {
         .to(topFvTitle, {
           opacity: 1,
         })
+
+        .to(
+          topFvBadge,
+          {
+            opacity: 1,
+          },
+          "view1"
+        )
 
         .to(
           fvTagLine,
@@ -543,6 +565,7 @@ const mainScript = () => {
     const infoFvTitle = document.querySelector(".c-fv__title--info");
     const topFvImage = document.querySelector(".js-fv-image");
     const topFvBodyLine = document.querySelectorAll(".js-split-line-fv");
+    const topFvBadge = document.querySelector(".js-fv-badge");
     const chars = infoFvTitle.textContent.trim().split("");
     infoFvTitle.textContent = "";
     chars.forEach((char) => {
@@ -564,6 +587,10 @@ const mainScript = () => {
       opacity: 0,
     });
 
+    gsap.set(topFvBadge, {
+      opacity: 0,
+    });
+
     gsap.set(infoFvTitleChars, {
       yPercent: 100,
       opacity: 0,
@@ -582,6 +609,13 @@ const mainScript = () => {
       .to(infoFvTitle, {
         opacity: 1,
       })
+      .to(
+        topFvBadge,
+        {
+          opacity: 1,
+        },
+        "start"
+      )
       .to(
         fvHeadTag,
         {
