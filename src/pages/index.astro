@@ -19,7 +19,21 @@ import Cta from "../components/Cta.astro";
     <span class="cursor__text c-text"></span>
   </div>
 
-  <Fv isTop={true} title="wh?o" badgeText="Proceed" />
+  <Fv
+    isTop={true}
+    title="wh?o"
+    badgeText="Proceed"
+    ,
+    image="/img/p-top-fv.jpg"
+    ,
+    alt="A forest wrapped in light fog"
+    ,
+    description={[
+      "I'm trying to make something.",
+      "Not just for you.",
+      "Maybe not even for me.",
+    ]}
+  />
 
   <section class="p-top-intro">
     <div class="l-wrapper p-top-intro__wrapper">
@@ -106,7 +120,7 @@ import Cta from "../components/Cta.astro";
                 autoplay="autoplay"
                 muted="muted"
                 playsinline="playsinline"
-                src="/img/project01.mp4"></video>
+                src="/img/project-01.mp4"></video>
             </a>
             <div class="project-card__info project-card__info--bottom">
               <span class="c-text">click to view</span>

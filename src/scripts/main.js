@@ -370,12 +370,6 @@ const mainScript = () => {
       const topFvTitleChars = document.querySelectorAll(".c-char--top");
       const timeline = gsap.timeline();
 
-      // gsap.set(loading, {
-      //   display: "none",
-      //   opacity: 0,
-      //   pointerEvents: "none",
-      // });
-
       gsap.set(topFvTitle, {
         opacity: 0,
       });
@@ -547,9 +541,8 @@ const mainScript = () => {
     //Fv section
     const fvHeadTag = document.querySelectorAll(".js-fv-tag-line");
     const infoFvTitle = document.querySelector(".c-fv__title--info");
-    const infoFvTitleContent = document.querySelector(
-      ".c-fv__title--info .text-wrapper"
-    );
+    const topFvImage = document.querySelector(".js-fv-image");
+    const topFvBodyLine = document.querySelectorAll(".js-split-line-fv");
     const chars = infoFvTitle.textContent.trim().split("");
     infoFvTitle.textContent = "";
     chars.forEach((char) => {
@@ -576,6 +569,15 @@ const mainScript = () => {
       opacity: 0,
     });
 
+    gsap.set(topFvImage, {
+      clipPath: "inset(100% 0 0 0)",
+    });
+
+    gsap.set(topFvBodyLine, {
+      yPercent: 100,
+      opacity: 0,
+    });
+
     timeline
       .to(infoFvTitle, {
         opacity: 1,
@@ -593,6 +595,28 @@ const mainScript = () => {
 
       .to(
         infoFvTitleChars,
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power2.In",
+          stagger: 0.1,
+        },
+        "start"
+      )
+
+      .to(
+        topFvImage,
+        {
+          clipPath: "inset(0% 0 0 0)",
+          duration: 1,
+          ease: "power2.In",
+        },
+        "start"
+      )
+
+      .to(
+        topFvBodyLine,
         {
           yPercent: 0,
           opacity: 1,
@@ -870,7 +894,7 @@ const mainScript = () => {
             yPercent: 0,
             opacity: 1,
             ease: "power2.out",
-            duration: 0.4,
+            duration: 0.5,
             stagger: 0.05,
           });
         },
@@ -939,7 +963,7 @@ const mainScript = () => {
     },
   });
 
-  //footer
+  //hover loop action
   const hoverToggle = document.querySelectorAll(".js-hover-toggle");
   const defaultText = document.querySelectorAll(".js-hover-default");
   const hoverText = document.querySelectorAll(".js-hover-reveal");
@@ -953,7 +977,7 @@ const mainScript = () => {
     yPercent: 100,
     opacity: 0,
   });
-  const footerHover = (enable) => {
+  const hoverLoopAction = (enable) => {
     if (isHoverRegistered) return;
     isHoverRegistered = true;
     if (!enable) return;
@@ -984,10 +1008,10 @@ const mainScript = () => {
     });
   };
 
-  footerHover(lg.matches);
+  hoverLoopAction(lg.matches);
 
   lg.addEventListener("change", () => {
-    footerHover(lg.matches);
+    hoverLoopAction(lg.matches);
   });
 
   document.querySelectorAll(".js-scroll-link").forEach((link) => {

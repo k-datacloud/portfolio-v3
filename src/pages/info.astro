@@ -10,7 +10,21 @@ import Fv from "../components/Fv.astro";
   title="Info | Kaisei Sadatoki | Front-end Developer & Designer"
   description="Kaisei Sadatoki’s portfolio website version 3. I’m a  activefront-end developer and designer from Hyogo, Japan, creating websites and digital experiences."
 >
-  <Fv isTop={false} title="in/fo" badgeText="scroll down" />
+  <Fv
+    isTop={false}
+    title="in/fo"
+    badgeText="scroll down"
+    ,
+    image="/img/p-info-fv.jpg"
+    ,
+    alt="A single tree standing on a hill under clear sky"
+    ,
+    description={[
+      "Just a few details about me",
+      "and this website.",
+      "Take it as a reference.",
+    ]}
+  />
 
   <section class="p-info-profile">
     <div class="l-wrapper p-info-profile__wrapper">

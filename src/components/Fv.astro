@@ -1,5 +1,5 @@
 ---
-const { isTop, title, badgeText } = Astro.props;
+const { isTop, title, badgeText, image, alt, description } = Astro.props;
 ---
 
 <section class="c-fv">
@@ -34,32 +34,23 @@ const { isTop, title, badgeText } = Astro.props;
           </span>
         </div>
       </div>
-      <div
-        class={isTop ? "c-fv-note c-fv-note--top" : "c-fv-note c-fv-note--info"}
-      >
+      <div class="c-fv-note">
         <div class="c-fv-note__image">
           <div class="l-image js-fv-image">
-            <span class="mask"></span>
-            <img src="/img/p-top-kv.jpg" alt="A forest wrapped in light fog" />
+            <span class={isTop ? "mask" : "mask mask--info"}></span>
+            <img src={image} alt={alt} />
           </div>
           <p class="c-fv-note__text c-text">
-            <span class="text-wrapper">
-              <span class="c-fv-note__line js-split-line-fv"
-                >I'm trying to make something.</span
-              >
-            </span>
-            <br />
-            <span class="text-wrapper">
-              <span class="c-fv-note__line js-split-line-fv"
-                >Not just for you.</span
-              >
-            </span>
-            <br />
-            <span class="text-wrapper">
-              <span class="c-fv-note__line js-split-line-fv"
-                >Maybe not even for me.</span
-              >
-            </span>
+            {
+              description.map((line: string, i: number) => (
+                <Fragment key={i}>
+                  <span class="text-wrapper">
+                    <span class="c-fv-note__line js-split-line-fv">{line}</span>
+                  </span>
+                  {i < description.length - 1 && <br />}
+                </Fragment>
+              ))
+            }
           </p>
         </div>
       </div>
@@ -85,3 +76,17 @@ const { isTop, title, badgeText } = Astro.props;
     </div>
   </div>
 </section>
+
+<!-- <span class="text-wrapper">
+  <span class="c-fv-note__line js-split-line-fv"
+    >I'm trying to make something.</span
+  >
+</span>
+<br />
+<span class="text-wrapper">
+  <span class="c-fv-note__line js-split-line-fv">Not just for you.</span>
+</span>
+<br />
+<span class="text-wrapper">
+  <span class="c-fv-note__line js-split-line-fv">Maybe not even for me.</span>
+</span> -->

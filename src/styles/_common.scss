@@ -618,6 +618,10 @@ body {
         top: 0;
         left: 0;
         background-color: rgba($color: #080807, $alpha: 0.25);
+
+        &--info {
+          background-color: rgba($color: #080807, $alpha: 0.1);
+        }
       }
 
       img {
