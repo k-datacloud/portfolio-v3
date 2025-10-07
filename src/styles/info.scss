@@ -150,7 +150,7 @@
     &__item {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      margin-bottom: calc(160 / 16 * 1rem);
+      margin-bottom: calc(192 / 16 * 1rem);
 
       &:last-child {
         margin-bottom: 0;
@@ -200,7 +200,7 @@
     &__label {
       display: grid;
       grid-template-rows: repeat(2, auto);
-      row-gap: 80px;
+      row-gap: 96px;
       @include respond-to("lg") {
         width: auto;
         grid-column-start: 5;
@@ -222,7 +222,7 @@
     &__content {
       display: grid;
       grid-template-rows: repeat(2, auto);
-      row-gap: 80px;
+      row-gap: 96px;
       @include respond-to("lg") {
         width: auto;
         grid-column-start: 8;

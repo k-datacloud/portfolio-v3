@@ -696,14 +696,35 @@ const mainScript = () => {
     });
   }
 
+  let lastScroll = 0;
+  let currentPosition = 0;
+
+  const bodyLock = () => {
+    currentPosition = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.height = "100vh";
+    document.body.style.top = `${currentPosition}px`;
+    document.body.style.left = "0";
+    lastScroll = currentPosition;
+  };
+
+  const bodyUnLock = () => {
+    document.body.style.position = "";
+    document.body.style.height = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    window.scrollTo(0, lastScroll);
+    lastScroll = currentPosition;
+  };
+
   //menu button and nav
-  const menuToggle = document.querySelector(".js-menu-open");
+  const menuOpen = document.querySelector(".js-menu-open");
   const menuClose = document.querySelector(".js-menu-close");
   const navMenu = document.querySelector(".js-nav-menu");
   const navMenuSocial = document.querySelector(".js-nav-menu-social");
   const navMenuItems = document.querySelectorAll(".js-nav-menu-item");
   const navTagLine = document.querySelectorAll(".js-nav-tag-line");
-  gsap.set(menuToggle, {
+  gsap.set(menuOpen, {
     pointerEvents: "none",
     opacity: 0,
   });
@@ -722,13 +743,13 @@ const mainScript = () => {
     opacity: 0,
   });
 
-  gsap.to(menuToggle, {
+  gsap.to(menuOpen, {
     scrollTrigger: {
-      trigger: menuToggle,
+      trigger: menuOpen,
       start: "200 top",
       end: "bottom bottom",
       onEnter: () => {
-        gsap.to(menuToggle, {
+        gsap.to(menuOpen, {
           pointerEvents: "auto",
           opacity: 1,
           duration: 1,
@@ -736,7 +757,7 @@ const mainScript = () => {
         });
       },
       onLeaveBack: () => {
-        gsap.to(menuToggle, {
+        gsap.to(menuOpen, {
           pointerEvents: "none",
           opacity: 0,
           duration: 1,
@@ -750,7 +771,7 @@ const mainScript = () => {
     trigger: footer,
     start: "top 20%",
     onEnter: () => {
-      gsap.to(menuToggle, {
+      gsap.to(menuOpen, {
         pointerEvents: "none",
         opacity: 0,
         duration: 1,
@@ -758,7 +779,7 @@ const mainScript = () => {
       });
     },
     onLeaveBack: () => {
-      gsap.to(menuToggle, {
+      gsap.to(menuOpen, {
         pointerEvents: "auto",
         opacity: 1,
         duration: 1,
@@ -767,49 +788,53 @@ const mainScript = () => {
     },
   });
 
-  const navTimeline = gsap.timeline({
-    paused: true,
-  });
-
-  navTimeline
-    .to(navMenu, {
-      pointerEvents: "auto",
-      clipPath: "inset(0 0 0% 0)",
-      duration: 0.8,
-      ease: "power4.Out",
-    })
-
-    .to(
-      navTagLine,
-      {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power4.Out",
-      },
-      "start-=.2"
-    )
-
-    .to(
-      navMenuItems,
-      {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power4.Out",
-        stagger: 0.1,
-      },
-      "start-=.2"
-    );
+  let isNavOpen = false;
 
   const openNav = () => {
-    menuToggle.addEventListener("click", () => {
-      navTimeline.play(0);
+    if (isNavOpen) {
+      return;
+    }
+    const navTimeline = gsap.timeline({
+      paused: true,
     });
+
+    navTimeline
+      .to(navMenu, {
+        pointerEvents: "auto",
+        clipPath: "inset(0 0 0% 0)",
+        duration: 0.8,
+        ease: "power4.Out",
+      })
+
+      .to(
+        navTagLine,
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power4.Out",
+        },
+        "start-=.2"
+      )
+
+      .to(
+        navMenuItems,
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power4.Out",
+          stagger: 0.1,
+        },
+        "start-=.2"
+      );
+    isNavOpen = true;
+    navTimeline.play(0);
+    bodyLock();
   };
 
   const closeNav = () => {
-    menuClose.addEventListener("click", () => {
+    return new Promise((resolve) => {
       gsap.to(navMenu, {
         opacity: 0,
         duration: 0.5,
@@ -828,13 +853,16 @@ const mainScript = () => {
             yPercent: 100,
             opacity: 0,
           });
+          resolve();
         },
       });
+      bodyUnLock();
+      isNavOpen = false;
     });
   };
 
-  openNav();
-  closeNav();
+  menuOpen.addEventListener("click", openNav);
+  menuClose.addEventListener("click", closeNav);
 
   // location time
   let offset;
@@ -899,7 +927,6 @@ const mainScript = () => {
         });
       } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "BR") {
         const isHidden = window.getComputedStyle(node).display === "none";
-        console.log(isHidden);
 
         if (!isHidden) {
           frag.appendChild(document.createElement("br"));
@@ -944,7 +971,6 @@ const mainScript = () => {
       .replace(/\t/g, "") // タブも削除
       .trim(); // 前後の空白は削除
     const words = text.split(" ");
-    console.log(words);
 
     el.textContent = "";
     words.forEach((word, index) => {
@@ -979,29 +1005,11 @@ const mainScript = () => {
     });
   });
 
-  const textLine = document.querySelectorAll(".js-split-line");
-  gsap.set(textLine, {
-    yPercent: 100,
-    opacity: 0,
-  });
-  gsap.to(textLine, {
-    yPercent: 0,
-    opacity: 1,
-    duration: 0.7,
-    ease: "power2.out",
-    stagger: 0.1,
-    scrollTrigger: {
-      trigger: textLine[0],
-      start: "top 85%",
-      end: "bottom top",
-    },
-  });
-
   //hover loop action
   const hoverToggle = document.querySelectorAll(".js-hover-toggle");
   const defaultText = document.querySelectorAll(".js-hover-default");
   const hoverText = document.querySelectorAll(".js-hover-reveal");
-  const lg = window.matchMedia("(min-width: 1024px)");
+  const mm = gsap.matchMedia();
   let isHoverRegistered = false;
   gsap.set(defaultText, {
     yPercent: 0,
@@ -1014,7 +1022,7 @@ const mainScript = () => {
   const hoverLoopAction = (enable) => {
     if (isHoverRegistered) return;
     isHoverRegistered = true;
-    if (!enable) return;
+    // if (!enable) return;
     hoverToggle.forEach((toggle, index) => {
       toggle.addEventListener("mouseenter", () => {
         gsap.set(defaultText[index], {
@@ -1042,10 +1050,8 @@ const mainScript = () => {
     });
   };
 
-  hoverLoopAction(lg.matches);
-
-  lg.addEventListener("change", () => {
-    hoverLoopAction(lg.matches);
+  mm.add("(min-width: 1024px)", () => {
+    hoverLoopAction();
   });
 
   document.querySelectorAll(".js-scroll-link").forEach((link) => {
@@ -1058,12 +1064,27 @@ const mainScript = () => {
 
       if (isTop) {
         const target = document.querySelector(href);
+        const scrollToTarget = () => {
+          gsap.to(window, {
+            scrollTo: target,
+            duration: 2,
+            ease: "power2.out",
+          });
+        };
         if (!target) return;
-        gsap.to(window, {
-          scrollTo: target,
-          duration: 2,
-          ease: "power2.out",
-        });
+        if (isNavOpen) {
+          console.log("closeNavAndScroll");
+
+          // async function closeNavAndScroll() {
+          //   await closeNav();
+          //   scrollToTarget();
+          // }
+          // closeNavAndScroll();
+          closeNav();
+          scrollToTarget();
+        } else {
+          scrollToTarget();
+        }
       } else {
         window.location.href = "/" + href;
       }
