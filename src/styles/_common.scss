@@ -695,8 +695,10 @@ body {
   }
 
   &__container {
-    padding: clamp(180px, calc(0px + 12.5vw), 320px) 36px
-      clamp(80px, calc(0.286px + 5.536vw), 142px);
+    padding-top: clamp(180px, calc(0px + 12.5vw), 320px);
+    padding-bottom: clamp(80px, calc(-64px + 10vw), 192px);
+    padding-left: 20px;
+    padding-right: 20px;
     background-color: #eaeaea;
     position: relative;
     z-index: 1;
