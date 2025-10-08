@@ -113,6 +113,7 @@ import Cta from "../components/Cta.astro";
               class="project-card__project js-on-project"
               href="/"
               target="_blank"
+              aria-label="Portfolio Version 3"
             >
               <video
                 class="l-film"
@@ -120,7 +121,10 @@ import Cta from "../components/Cta.astro";
                 autoplay="autoplay"
                 muted="muted"
                 playsinline="playsinline"
-                src="/img/project-01.mp4"></video>
+                aria-hidden="true"
+              >
+                <source src="img/project-01.mp4" type="video/mp4" /></video
+              >
             </a>
             <div class="project-card__info project-card__info--bottom">
               <span class="c-text">click to view</span>
