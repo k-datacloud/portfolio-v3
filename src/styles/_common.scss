@@ -1,7 +1,9 @@
 @charset "UTF-8";
 
+@use "sass:map";
+
 $breakpoints: (
-  "sm": 480px,
+  "sm": 375px,
   "md": 768px,
   "lg": 1024px,
   "xl": 1440px,
@@ -9,8 +11,8 @@ $breakpoints: (
 );
 
 @mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    $breakpoint-value: map-get($breakpoints, $breakpoint);
+  @if map.has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map.get($breakpoints, $breakpoint);
 
     @media (min-width: $breakpoint-value) {
       @content;
@@ -188,11 +190,15 @@ body {
 }
 
 .c-heading {
-  font-size: clamp(3rem, 2.2718rem + 3.1068vw, 6rem);
+  font-size: clamp(2.5rem, -0.4091rem + 14.5455vw, 3rem);
   line-height: 1;
   font-weight: 500;
   @include font-satoshi;
   color: #d1d1c7;
+
+  @include respond-to("sm") {
+    font-size: clamp(3rem, 2.2718rem + 3.1068vw, 6rem);
+  }
 
   &--black {
     color: #080807;
@@ -200,12 +206,16 @@ body {
 }
 
 .c-lead {
-  font-size: clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);
+  font-size: clamp(1rem, 0.2727rem + 3.6364vw, 1.125rem);
   line-height: 1;
   font-weight: 500;
   @include font-satoshi;
   color: #ffffff;
   text-transform: uppercase;
+
+  @include respond-to("sm") {
+    font-size: clamp(1.125rem, 0.993rem + 0.5634vw, 1.5rem);
+  }
 
   &--black {
     color: #080807;
@@ -213,11 +223,15 @@ body {
 }
 
 .c-text {
-  font-size: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+  font-size: clamp(0.8125rem, 0.4489rem + 1.8182vw, 0.875rem);
   line-height: 1.5;
   font-weight: 400;
   @include font-inter();
   color: #d1d1c7;
+
+  @include respond-to("sm") {
+    font-size: clamp(0.875rem, 0.706rem + 0.5634vw, 1rem);
+  }
 
   &--black {
     color: #080807;
@@ -586,9 +600,13 @@ body {
   }
 
   .c-fv-note {
-    width: calc(161 / 375 * 100vw);
+    width: 50vw;
     max-width: 200px;
     margin-left: auto;
+
+    @include respond-to("sm") {
+      width: calc(161 / 375 * 100vw);
+    }
 
     @include respond-to("lg") {
       display: grid;
@@ -665,8 +683,12 @@ body {
     text-transform: uppercase;
 
     &--top {
-      font-size: clamp(6.75rem, 4.0469rem + 11.5332vw, 22.5rem);
+      font-size: clamp(5.75rem, -0.0682rem + 29.0909vw, 6.75rem);
       opacity: 0;
+
+      @include respond-to("sm") {
+        font-size: clamp(6.75rem, 4.0469rem + 11.5332vw, 22.5rem);
+      }
     }
 
     &--info {
@@ -816,9 +838,13 @@ body {
     color: #d1d1c7;
     padding: 12px 24px;
     border-radius: 40px;
-    font-size: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+    font-size: clamp(0.8125rem, 0.4489rem + 1.8182vw, 0.875rem);
     @include font-inter();
     font-weight: 500;
+
+    @include respond-to("sm") {
+      font-size: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+    }
 
     @include respond-to("lg") {
       padding: 16px 36px;
@@ -1062,7 +1088,11 @@ body {
     }
 
     &__text {
-      font-size: 14px;
+      font-size: 11px;
+
+      @include respond-to("sm") {
+        font-size: 14px;
+      }
     }
   }
 }
